@@ -1,7 +1,7 @@
 
 var Config = function() {
 
-    this.videoListServiceUrl = "http://www.aminutetorelax.com/php/getListVideos.php"
+    this.videoListServiceUrl = "http://aminutetorelax.com/php/getListVideos.php"
 }
 
 Config.prototype.getVideoListServiceUrl = function(){
