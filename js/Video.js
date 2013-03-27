@@ -12,20 +12,7 @@
 
 var Video = function () {
 
-    //attributes
-    this.endPoint           = "http://www.vimeo.com/api/oembed.json";
-    this.callBack           = "Video.prototype.embedVideo";
-    this.url = null;
-
-    this.channel            = "497601"
-    this.channelEndPoint    = "http://vimeo.com/api/v2/channel/"
-    this.channelCallBack    = "Video.prototype.getVideoUrl";
-
-    /**
-     * Array of videosIds
-     * @type {null}
-     */
-    this.aIdVideos = null;
+    this.Config = new Config();
 
 }
 
@@ -43,9 +30,10 @@ Video.prototype.getVideoUrl = function (videos) {
     var av = [];
 
     //iterate all the videos json
-    $.each(videos,function(i,e){
+    $.each(JSON.parse(videos),function(i,e){
         av.push(e.id);
     })
+
 
     //get a random video from the channel.
     var aLength = av.length;
@@ -96,64 +84,18 @@ Video.prototype.getVideo =  function (oVideo) {
  *
  */
 Video.prototype.loadVideosChannel =  function () {
-    $.getScript(    this.channelEndPoint +
-                    this.channel +
-                    '/videos.json?callback=' + this.channelCallBack);
+
+    $.getScript(this.Config.getVideoListServiceUrl(), function (data, textStatus, jqxhr){
+        Video.prototype.getVideoUrl(data);
+    });
+
 }
 
 Video.prototype.embedVideo = function (video){
     document.getElementById('embed').innerHTML = decodeURI(video.html);
 }
 
-/* deprecated#
 
-Video.prototype.getVideoUrl = function () {
-
-    var d = new Date();
-    var n = d.getSeconds().toString();
-    var v = null;
-    var t = null;
-
-    switch (n.charAt(0)) {
-        case "0":
-            v = 22439234; //yosemiti
-            break;
-        case "1":
-            v = 40802206;
-            t = "1m47s";
-            break;
-        case "2":
-            v = 42882023;
-            t = "2m053s";
-            break;
-        case "3":
-            v = 28404579;
-            t = "12m30s";
-            break;
-        case "4":
-            v = 33749976;
-            t = "1m30s";
-            break;
-        case "5":
-            v = 29017795;
-            t = "0m18s";
-            break;
-        case "6":
-            v = 44941805;
-            break;
-        default:
-        //no default
-
-    }
-
-    var videoUrl = 'http://www.vimeo.com/' + v;
-
-    return {
-        videoUrl: videoUrl,
-        videoTiming: t
-    }
-};
-*/
 
 
 
