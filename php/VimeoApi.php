@@ -7,7 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */
 
-include 'php/vimeo/vimeo.php';
 
 class VimeoApi extends phpVimeo{
 
