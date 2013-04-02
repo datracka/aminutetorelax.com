@@ -82,9 +82,10 @@ class phpVimeo
     /**
      * Generate the OAuth signature.
      *
-     * @param array $args The full list of args to generate the signature for.
+     * @param $params
      * @param string $request_method The request method, either POST or GET.
      * @param string $url The base URL to use.
+     * @internal param array $args The full list of args to generate the signature for.
      * @return string The OAuth signature.
      */
     private function _generateSignature($params, $request_method = 'GET', $url = self::API_REST_URL)
