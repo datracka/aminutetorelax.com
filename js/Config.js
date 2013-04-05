@@ -1,9 +1,9 @@
 
 var Config = function() {
 
-    this.videoListServiceUrl = "http://relax.local/php/getListVideos.php"
+    this.serviceUrl = "http://relax.local/php/"
 }
 
-Config.prototype.getVideoListServiceUrl = function(){
-    return  this.videoListServiceUrl;
+Config.prototype.getServiceUrl = function(){
+    return  this.serviceUrl;
 }

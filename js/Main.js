@@ -13,6 +13,7 @@ var Main = (function(){
         Main.video.loadVideosChannel();
 
         $("div.loading:nth-child(1)").center();
+        $(".st_thumbs_wrapper").css('left', ($(window).width() - 150) + 'px');
 
 
     }
@@ -56,8 +57,8 @@ var Main = (function(){
                         function(){
                             //enable events
 
-                            hidedHeader.mouseover(Main.prototype.showCloseHeader);
-                            hidedHeader.mouseout(Main.prototype.hideCloseHeader);
+                            hidedHeader.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
+                            //hidedHeader.mouseout(Main.prototype.hideCloseHeader);
                             hidedHeader.click(Main.prototype.closewindow)
 
                         }
@@ -67,10 +68,10 @@ var Main = (function(){
         },
 
         showCloseHeader: function () {
-            $("#closeHeader").off().animate({"top": "+70px"}, "slow");
+            $("#closeHeader").off().animate({"top": "+70px"}, "fast");
         },
         hideCloseHeader: function () {
-            $("#closeHeader").off().animate({"top": "-70px"}, "slow");
+            $("#closeHeader").off().animate({"top": "-70px"}, "fast");
         },
 
         closewindow: function(){

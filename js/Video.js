@@ -12,8 +12,34 @@
 
 var Video = function () {
 
-    this.Config = new Config();
+}
 
+/**
+ * gather list of videos of selected channel
+ *
+ * Callback getVideoUrl
+ *
+ */
+Video.prototype.loadVideosChannel =  function () {
+
+    var oConfig = new Config();
+    $.getScript(oConfig.getServiceUrl() + "getListVideos.php", function (data, textStatus, jqxhr){
+        Video.prototype.prepareVideoUrl(data);
+    });
+
+}
+
+/**
+ *
+ * given video Id gather thumbnails
+ * @param videoId
+ */
+Video.prototype.getThumbnails = function(videoId){
+
+    var oConfig = new Config();
+    $.getScript(oConfig.getServiceUrl() + "getThumbsByVideoId.php?id="+videoId, function (data, textStatus, jqxhr){
+        return (JSON.parse(data)[1]._content);  //returns pos 1 array with thumb 150x200
+    });
 }
 
 /**
@@ -21,17 +47,19 @@ var Video = function () {
  *
  * @param videos
  */
-Video.prototype.getVideoUrl = function (videos) {
+Video.prototype.prepareVideoUrl = function (videos) {
 
     var v = null;
     var t = null;
     var rn = null;
     var ov = null;
-    var av = [];
+    var av = [];  //array videos
+    var at = [];  //arrray thumbs
 
-    //iterate all the videos json
+    //iterate all the videos json and fill arrays
     $.each(JSON.parse(videos),function(i,e){
         av.push(e.id);
+        at.push(Video.prototype.getThumbnails(e.id));
     })
 
 
@@ -78,21 +106,14 @@ Video.prototype.getVideo =  function (oVideo) {
 };
 
 /**
- * gather list of videos of selected channel
  *
- * Callback getVideo
- *
+ * Callback from Video.prototype.getVideo
+ * @param video
  */
-Video.prototype.loadVideosChannel =  function () {
-
-    $.getScript(this.Config.getVideoListServiceUrl(), function (data, textStatus, jqxhr){
-        Video.prototype.getVideoUrl(data);
-    });
-
-}
-
 Video.prototype.embedVideo = function (video){
-    document.getElementById('embed').innerHTML = decodeURI(video.html);
+    $('#loading').remove();
+    $('#embed').append(decodeURI(video.html));
+
 }
 
 

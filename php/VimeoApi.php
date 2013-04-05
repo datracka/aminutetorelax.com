@@ -25,7 +25,7 @@ class VimeoApi extends phpVimeo{
     public function __construct()
     {
         parent::__construct($this->ck, $this->cs, $this->rt, $this->ts);
-        //parent::enableCache(phpVimeo::CACHE_FILE, './cache', 3000);
+        parent::enableCache(phpVimeo::CACHE_FILE, './cache', 3000);
     }
 
     public function getListOfVideos()
@@ -39,5 +39,17 @@ class VimeoApi extends phpVimeo{
 
         return $videos;
 
+    }
+
+    public function getThumbsByVideoId($videoId)
+    {
+
+        $thumbs = $this->call('vimeo.videos.getThumbnailUrls',
+            array(
+                'video_id' => $videoId)
+
+        );
+
+        return $thumbs;
     }
 }
