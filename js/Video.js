@@ -16,16 +16,45 @@ var Video = function () {
 
 /**
  * gather list of videos of selected channel
+ * Channel HC on server side.
  *
  * Callback getVideoUrl
  *
  */
-Video.prototype.loadVideosChannel =  function () {
+Video.prototype.loadVideosFromChannel =  function () {
 
     var oConfig = new Config();
-    $.getScript(oConfig.getServiceUrl() + "getListVideos.php", function (data, textStatus, jqxhr){
-        Video.prototype.prepareVideoUrl(data);
+
+    $.ajax({
+        url: oConfig.getServiceUrl() + "getListVideos.php",
+        dataType: "script",
+        async: false,
+        success: function (data, textStatus, jqxhr){
+            Main.videos = data;
+        }
     });
+
+}
+
+/**
+ *
+ * return array of thumbnails for videos given
+ *
+ * @param videos
+ * @return {Array}
+ */
+Video.prototype.getThumbnails = function(videos){
+
+    //iterate all the videos json and fill arrays
+    var aVideos = JSON.parse(videos);
+    aVideos  = aVideos.reverse();
+    var sliceVideos = aVideos.slice(0,20);
+
+    $.each(sliceVideos, function(i,e){
+        //TODO better storage!! very dirty. we just rely that the video Id has the same position that the thumb
+        Main.aVideosThumbs.push(e.id);
+        Video.prototype.getThumbnailByVideoId(e.id);
+    })
 
 }
 
@@ -34,11 +63,17 @@ Video.prototype.loadVideosChannel =  function () {
  * given video Id gather thumbnails
  * @param videoId
  */
-Video.prototype.getThumbnails = function(videoId){
+Video.prototype.getThumbnailByVideoId = function(videoId){
 
     var oConfig = new Config();
-    $.getScript(oConfig.getServiceUrl() + "getThumbsByVideoId.php?id="+videoId, function (data, textStatus, jqxhr){
-        return (JSON.parse(data)[1]._content);  //returns pos 1 array with thumb 150x200
+
+    $.ajax({
+        url: oConfig.getServiceUrl() + "getThumbsByVideoId.php?id="+videoId,
+        dataType: "script",
+        async: false,
+        success: function (data, textStatus, jqxhr){
+            Main.aThumbs.push(JSON.parse(data)[1]._content);   //returns pos 1 array with thumb 150x200
+        }
     });
 }
 
@@ -54,12 +89,10 @@ Video.prototype.prepareVideoUrl = function (videos) {
     var rn = null;
     var ov = null;
     var av = [];  //array videos
-    var at = [];  //arrray thumbs
 
-    //iterate all the videos json and fill arrays
+
     $.each(JSON.parse(videos),function(i,e){
         av.push(e.id);
-        at.push(Video.prototype.getThumbnails(e.id));
     })
 
 

@@ -118,19 +118,21 @@ textarea {
     position: relative;
     cursor: pointer;
     margin-top: -70px;
+    border-radius: 5px;
+    width: 60%;
 }
 
 .hidedHeader{
     z-index: 101;
     opacity: 0;
-    width: 100%;
+    width: 60%;
     height: 70px;
-    position: absolute;
-    border-radius: 15px;
-    top:0px;
-    left:0px;
+    position: relative;
     cursor:pointer;
     background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
 }
 
 .loading{
@@ -144,27 +146,32 @@ textarea {
 
 .st_thumbs_wrapper {
     overflow: hidden;
-    width:150px;
-    background-color: white;
-    opacity: 0.5;
+    width: 200px;
+    background-color: #000000;
     height: 400px;
-    width: 100%;
     position: absolute;
+    opacity: 0;
+    top: 1px;
 }
 
 .st_thumbs {
-    width: 150px;
+    width: 200px;
     margin: 0;
+    overflow: hidden;
+}
+
+.st_thumbs img:hover{
+    opacity: 1;
 }
 
 .st_thumbs img {
     float:left;
-    margin: 3px 3px 0px 0px;
+    /*margin: 3px 3px 0px 0px;*/
     cursor: pointer;
     -moz-box-shadow: 1px 1px 5px #000;
     -webkit-box-shadow: 1px 1px 5px #000;
     box-shadow: 1px 1px 5px #000;
-    opacity: 0.7;
+    opacity: 0.5;
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
 }
 
