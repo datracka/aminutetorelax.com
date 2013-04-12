@@ -82,7 +82,7 @@ Video.prototype.getThumbnailByVideoId = function(videoId){
  *
  * @param videos
  */
-Video.prototype.prepareVideoUrl = function (videos) {
+Video.prototype.getRandomVideo = function (videos) {
 
     var v = null;
     var t = null;
@@ -131,10 +131,7 @@ Video.prototype.getVideo =  function (oVideo) {
         '&autoplay=1' +
         '&t=' + oVideo.videoTiming;
 
-    var js = document.createElement('script');
-    js.setAttribute('type', 'text/javascript');
-    js.setAttribute('src', url);
-    document.getElementsByTagName('head').item(0).appendChild(js);
+    $.getScript(url);
 
 };
 
@@ -145,8 +142,7 @@ Video.prototype.getVideo =  function (oVideo) {
  */
 Video.prototype.embedVideo = function (video){
     $('#loading').remove();
-    $('#embed').append(decodeURI(video.html));
-
+    $('#embed').empty().append(decodeURI(video.html));
 }
 
 

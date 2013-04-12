@@ -21,6 +21,7 @@ textarea {
 body {
     font-size: 1em;
     line-height: 1.4;
+    background-color: #000000;
 }
 
 /*
@@ -111,7 +112,7 @@ textarea {
     opacity: 0.75;
     height: 70px;
     font-family: verdana;
-    font-size: 36pt;
+    font-size: 16pt;
     text-align: center;
     line-height: 60px;
     margin: 0 auto;
@@ -120,6 +121,12 @@ textarea {
     margin-top: -70px;
     border-radius: 5px;
     width: 60%;
+}
+
+.closeHeader a{
+    text-decoration: underline;
+    font-weight: bold;
+    color: #a52a2a;;
 }
 
 .hidedHeader{

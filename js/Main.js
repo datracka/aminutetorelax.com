@@ -3,6 +3,7 @@ var Main = (function(){
     //Constructor
     function Main(){
 
+
         // Get new library object for storing elements
         Main.library = new Storage();
 
@@ -19,12 +20,26 @@ var Main = (function(){
         Main.view.drawThumbnailsSidebar(Main.aThumbs, Main.aVideosThumbs);
 
         //load video
-        Main.video.prepareVideoUrl(Main.videos);
+        if (typeof(Main.urlVars["id"]) != "undefined"){
+
+            //set and return finakl url
+            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
+
+            var ov = {
+                videoUrl: videoUrl,
+                videoTiming: 0 //dont user timing at the moment
+            }
+
+            Video.prototype.getVideo(ov);
+
+        }else{ //No video defined in querystring. we sort it
+
+            Main.video.getRandomVideo(Main.videos);
+        }
 
         //TODO: positioning stuff. Move to appropiate place
         $("div.loading:nth-child(1)").center();
-        $(".st_thumbs_wrapper").css('left', ($(window).width() - 202) + 'px');
-
+        $(".st_thumbs_wrapper").css('left', ($(window).width() - 201) + 'px');
 
     }
 
@@ -32,8 +47,7 @@ var Main = (function(){
     Main.library = "";
     Main.video = null;
     Main.view = null;
-    Main.urlVars = "";
-
+    Main.urlVars = null;
     //data -> todo: use Storage library
     Main.aVideosThumbs = []
     Main.aThumbs = []  //array thumbs
@@ -93,19 +107,15 @@ var Main = (function(){
             );
         },
 
-        /**
-         * methods realted to events
-         *
-         */
-
-        showVideo: function(){
-            alert("show video");
-        },
-
         showSidebar: function () {
             $(this).stop().animate({
                 opacity: 1
             }, 500)
+        },
+
+        closewindow: function(){
+                 alert("aaa");
+
         },
 
         hideSidebar: function () {
@@ -119,21 +129,6 @@ var Main = (function(){
         },
         hideCloseHeader: function () {
             $("#closeHeader").stop().animate({"top": "-65px"}, "fast");
-        },
-
-        closewindow: function(){
-
-            var d = Main.urlVars["a"];
-            var p = Main.urlVars["p"];
-            var url = p + "//" + d;
-
-            var win = parent;
-            win.postMessage("destroy_bookmarklet",url);
-
-        },
-
-        onDocument: function (event){
-             alert("aa");
         },
 
         getUrlVars: function(){
