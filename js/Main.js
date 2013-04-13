@@ -4,6 +4,7 @@ var Main = (function(){
     function Main(){
 
 
+        $("div.loadingBackground:nth-child(1)").center().fadeIn(1000);
         // Get new library object for storing elements
         Main.library = new Storage();
 
@@ -20,25 +21,24 @@ var Main = (function(){
         Main.view.drawThumbnailsSidebar(Main.aThumbs, Main.aVideosThumbs);
 
         //load video
-        if (typeof(Main.urlVars["id"]) != "undefined"){
-
-            //set and return finakl url
-            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
-
-            var ov = {
-                videoUrl: videoUrl,
-                videoTiming: 0 //dont user timing at the moment
-            }
-
-            Video.prototype.getVideo(ov);
-
-        }else{ //No video defined in querystring. we sort it
-
-            Main.video.getRandomVideo(Main.videos);
-        }
+//        if (typeof(Main.urlVars["id"]) != "undefined"){
+//
+//            //set and return final url
+//            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
+//
+//            var ov = {
+//                videoUrl: videoUrl,
+//                videoTiming: 0 //don't use timing at the moment
+//            }
+//
+//            Video.prototype.getVideo(ov);
+//
+//        }else{ //No video defined in query string. we sort it
+//
+//            Main.video.getRandomVideo(Main.videos);
+//        }
 
         //TODO: positioning stuff. Move to appropiate place
-        $("div.loading:nth-child(1)").center();
         $(".st_thumbs_wrapper").css('left', ($(window).width() - 201) + 'px');
 
     }
@@ -82,29 +82,30 @@ var Main = (function(){
 
             sidebar.hover(Main.prototype.showSidebar, Main.prototype.hideSidebar);
             //imgPressed.click(Main.prototype.showVideo)
+            hidedHeader.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
+            //hidedHeader.mouseout(Main.prototype.hideCloseHeader);
+            //hidedHeader.click(Main.prototype.closewindow)
 
             /** show iframe **/
             $(".wrapper").fadeIn(2000);
 
             /** set close button animation */
-            $("#closeHeader").animate(
-                {"top": "65px"},
-                "slow",
-                function(){
-                    $("#closeHeader").delay(3000).animate(
-                        {"top": "-65px"},
-                        "slow",
-                        function(){
-                            //enable events
-
-                            hidedHeader.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
-                            //hidedHeader.mouseout(Main.prototype.hideCloseHeader);
-                            hidedHeader.click(Main.prototype.closewindow)
-
-                        }
-                    );
-                }
-            );
+//            $("#closeHeader").animate(
+//                {"top": "65px"},
+//                "slow",
+//                function(){
+//                    $("#closeHeader").delay(3000).animate(
+//                        {"top": "-65px"},
+//                        "slow",
+//                        function(){
+//                            //enable events
+//
+//
+//
+//                        }
+//                    );
+//                }
+//            );
         },
 
         showSidebar: function () {
@@ -114,7 +115,7 @@ var Main = (function(){
         },
 
         closewindow: function(){
-                 alert("aaa");
+
 
         },
 

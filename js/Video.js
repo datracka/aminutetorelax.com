@@ -141,8 +141,11 @@ Video.prototype.getVideo =  function (oVideo) {
  * @param video
  */
 Video.prototype.embedVideo = function (video){
-    $('#loading').remove();
-    $('#embed').empty().append(decodeURI(video.html));
+
+    $('#loadingBackground').fadeOut(1000,function(){
+        $('#embed').empty().append(decodeURI(video.html));
+    });
+
 }
 
 
