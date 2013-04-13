@@ -21,22 +21,22 @@ var Main = (function(){
         Main.view.drawThumbnailsSidebar(Main.aThumbs, Main.aVideosThumbs);
 
         //load video
-//        if (typeof(Main.urlVars["id"]) != "undefined"){
-//
-//            //set and return final url
-//            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
-//
-//            var ov = {
-//                videoUrl: videoUrl,
-//                videoTiming: 0 //don't use timing at the moment
-//            }
-//
-//            Video.prototype.getVideo(ov);
-//
-//        }else{ //No video defined in query string. we sort it
-//
-//            Main.video.getRandomVideo(Main.videos);
-//        }
+        if (typeof(Main.urlVars["id"]) != "undefined"){
+
+            //set and return final url
+            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
+
+            var ov = {
+                videoUrl: videoUrl,
+                videoTiming: 0 //don't use timing at the moment
+            }
+
+            Video.prototype.getVideo(ov);
+
+        }else{ //No video defined in query string. we sort it
+
+            Main.video.getRandomVideo(Main.videos);
+        }
 
         //TODO: positioning stuff. Move to appropiate place
         $(".st_thumbs_wrapper").css('left', ($(window).width() - 201) + 'px');
