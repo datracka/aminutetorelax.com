@@ -4,7 +4,7 @@ var Main = (function(){
     function Main(){
 
 
-        $("div.loadingBackground:nth-child(1)").center().fadeIn(1000);
+        //$("div.loadingBackground:nth-child(1)").center().fadeIn(1000);
         // Get new library object for storing elements
         Main.library = new Storage();
 
