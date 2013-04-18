@@ -130,7 +130,7 @@ textarea {
     opacity: 0.75;
     height: 70px;
     font-family: verdana;
-    font-size: 16pt;
+    font-size: 12pt;
     text-align: center;
     line-height: 60px;
     margin: 0 auto;
@@ -171,7 +171,7 @@ textarea {
    font-size: 16pt;
    text-align: center;
    color: #fefefe;
-   font-size: 16pt;
+   font-size: 14pt;
    text-shadow:2px 2px 1px #333333;
 
     font-family: Verdana, Geneva, Arial, sans-serif;
@@ -208,6 +208,7 @@ textarea {
     position: absolute;
     opacity: 0;
     top: 1px;
+    right: 0px;
 }
 
 .st_thumbs {
@@ -242,6 +243,14 @@ textarea {
 
 @media all and (max-width: 1024px) {
     /* styles for narrow desktop browsers and iPad landscape */
+
+    .closeHeader{
+
+        font-size: 10pt;
+        line-height: 60px;
+        border-radius: 5px;
+        width: 60%;
+    }
 }
 
 @media all and (max-width: 768px) {
