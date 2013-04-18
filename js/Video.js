@@ -47,8 +47,9 @@ Video.prototype.getThumbnails = function(videos){
 
     //iterate all the videos json and fill arrays
     var aVideos = JSON.parse(videos);
-    aVideos  = aVideos.reverse();
-    var sliceVideos = aVideos.slice(0,20);
+    aVideos = Video.prototype.shuffleArray(aVideos); //schuffle videos
+    aVideos  = aVideos.reverse(); //reverse them
+    var sliceVideos = aVideos.slice(0,20); //get 20 firsts.
 
     $.each(sliceVideos, function(i,e){
         //TODO better storage!! very dirty. we just rely that the video Id has the same position that the thumb
@@ -56,6 +57,19 @@ Video.prototype.getThumbnails = function(videos){
         Video.prototype.getThumbnailByVideoId(e.id);
     })
 
+}
+
+/**
+ *
+ * Shuffle elements of an array
+ *
+ * @param o
+ * @return array schuffled
+ */
+
+Video.prototype.shuffleArray = function(o){
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
 }
 
 /**
