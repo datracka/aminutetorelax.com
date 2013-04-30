@@ -9,34 +9,7 @@ var Main = (function(){
         Main.prototype.fetchElements();
         Main.prototype.initializeEventListeners();
 
-        Main.video = new Video();
-        //set Main.videos with videos from Channel
-        Main.video.loadVideosFromChannel();
-
-        //set Main.aThumbs with thumbs available
-        Main.video.getThumbnails(Main.videos);
-        Main.view = new View();
-        Main.view.drawThumbnailsSidebar(Main.aThumbs, Main.aVideosThumbs);
-
-        //load video
-        if (typeof(Main.urlVars["id"]) != "undefined"){
-
-            //set and return final url
-            var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
-
-            var ov = {
-                videoUrl: videoUrl,
-                videoTiming: 0 //don't use timing at the moment
-            }
-
-            Video.prototype.getVideo(ov);
-
-        }else{ //No video defined in query string. we sort it
-
-            Main.video.getRandomVideo(Main.videos);
-        }
-
-
+        Main.prototype.init();
 
     }
 
@@ -51,6 +24,27 @@ var Main = (function(){
     Main.videos = null //videos
 
     Main.prototype = {
+
+        init: function () {
+
+            //load video if exists Id. else we load it after ask for loadVideosFromChannel.
+            if (typeof(Main.urlVars["id"]) != "undefined"){
+
+                //set and return final url
+                var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
+
+                var ov = {
+                    videoUrl: videoUrl,
+                    videoTiming: 0 //don't use timing at the moment
+                }
+
+                Video.prototype.getVideo(ov);
+            }
+
+            Main.video = new Video();
+            Main.video.loadVideosFromChannel();
+
+        },
 
         fetchElements: function(){
             var hidedHeader     = $('#hidedHeader')
