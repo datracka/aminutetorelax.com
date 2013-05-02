@@ -51,7 +51,6 @@ var Main = (function(){
             var sidebar         = $('#st_thumbs_wrapper')
             var html            = $('html');
             var cWindow         = $(window);
-            var divSidebar      = $('.st_thumbs div');
 
 
             Main.library.set('hidedHeader', hidedHeader);
@@ -59,7 +58,6 @@ var Main = (function(){
 
             Main.library.set('html', html);
             Main.library.set('cWindow', cWindow);
-            Main.library.set('divSidebar', divSidebar);
 
         },
 
@@ -73,12 +71,9 @@ var Main = (function(){
             var html = Main.library.get('html');
             var hidedHeader = Main.library.get('hidedHeader');
             var sidebar = Main.library.get('sidebar');
-            var divSidebar = Main.library.get('divSidebar');
-
-
+            
 
             cWindow.resize(Main.prototype.resizeScreenElements);
-            divSidebar.hover(Main.prototype.highLight);
 
             sidebar.hover(Main.prototype.showSidebar, Main.prototype.hideSidebar);
             hidedHeader.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
@@ -96,13 +91,6 @@ var Main = (function(){
 
             $('.wrapper iframe').css('height', $(window).height() + 'px');
             $('.wrapper iframe').css('width', $(window).width() + 'px');
-        },
-
-        highLight: function(){
-            $(this).stop().animate({
-                opacity: 1
-            }, 500)
-
         },
 
         showSidebar: function () {
