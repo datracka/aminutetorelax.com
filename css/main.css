@@ -217,11 +217,11 @@ textarea {
     overflow: hidden;
 }
 
-.st_thumbs img:hover{
+.st_thumbs div:hover{
     opacity: 1;
 }
 
-.st_thumbs img {
+.st_thumbs div {
     float:left;
     /*margin: 3px 3px 0px 0px;*/
     cursor: pointer;
@@ -230,6 +230,10 @@ textarea {
     box-shadow: 1px 1px 5px #000;
     opacity: 0.5;
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    width: 200px;
+    height: 150px;
+    background: url(/img/ajax-loader.gif) no-repeat center center;
+
 }
 
 /* end sidebar */
