@@ -3,7 +3,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
+    <head id="head">
         <meta charset="utf-8">
         <title>Mind fullness:: Watch inspiring HD videos to relax</title>
         <meta name="keywords" content="mind fullness, a minute to relax, relax, be, mind, yoga, personal growth, spiritualism">
@@ -21,6 +21,45 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <!-- vimeo url container-->
         <script type="text/javascript" src=""></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
+
+        <script language="javascript">
+
+            function loadVarsInit(){
+                var vars = {};
+                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                    vars[key] = value;
+                });
+
+                return vars;
+            }
+
+            function getHeadersFB(videoId){
+
+                var request = $.ajax({
+                    url: "http://" + window.location.hostname + "/php/" + "getInfoByVideoId.php?id="+ videoId,
+                    dataType: "script",
+                    async: true
+                });
+
+                request.success(function(data, textStatus, jqXHR){
+
+                    var oData = JSON.parse(data)[0]
+
+                    $("#head").append('<meta property="og:title" content="A minute to relax: '+ oData.title + '" />');
+                    $("#head").append('<meta property="og:type" content="video.movie" />');
+                    $("#head").append('<meta property="og:url" content="http://aminutetorelax.com/?id=' + oData.id +'" />');
+                    $("#head").append('<meta property="og:image" content="' + oData.thumbnails.thumbnail[2]._content + '" />');
+
+                });
+            }
+
+            getHeadersFB(loadVarsInit()["id"]);
+
+        </script>
+
     </head>
     <body onload="Main();">
         <!--[if lt IE 7]>
@@ -48,8 +87,6 @@
 
         <!-- my app -->
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/Config.js"></script>
         <script src="js/Storage.js"></script>

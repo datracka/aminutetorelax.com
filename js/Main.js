@@ -38,6 +38,7 @@ var Main = (function(){
                     videoTiming: 0 //don't use timing at the moment
                 }
 
+                //Video.prototype.getInfoVideo(Main.urlVars["id"]);
                 Video.prototype.getVideo(ov);
             }
 
