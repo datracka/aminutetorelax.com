@@ -10,6 +10,45 @@
         <meta name="keywords" content="This free and unobtrusive app allows you having a minute to relax watching a inspiring HD fullscreen video in your computer screen.">
         <meta name="viewport" content="width=device-width">
 
+        <?php
+
+        //Ugliest Hardcoded ever for FB. improve it!!
+        include "php/vimeo/vimeo.php";
+        include "php/VimeoApi.php";
+
+
+        if (!is_null($_GET['id']) && $_GET['id'] != "")
+        {
+
+            $vimeo = new phpVimeo(
+                "11ea28e89d369a475e41c255278f5a9ae47c61a4",
+                "031045fc9da4d57d405f51ee63ca5761ae8c7264",
+                "10bbc5bbfc5005ca32a5a95a0403b41f",
+                "222efa6b3c8621dc201a3a1333f531293d866a3c"
+            );
+
+            $oVideoInfo = $vimeo->call('vimeo.videos.getInfo',
+                array(
+                    'video_id' => $_GET['id'])
+            );
+
+            $oData = $oVideoInfo->video;
+
+            $title = $oData[0]->title;
+            $desc = $oData[0]->description;
+            $id = $oData[0]->id;
+            $content = $oData[0]->thumbnails->thumbnail[2]->_content;
+
+            echo ('<meta property="og:title" content="A minute to relax: ' . $title . '" />');
+            echo ('<meta property="og:description" content="' . $desc . '" />');
+            echo ('<meta property="og:type" content="video.movie" />');
+            echo ('<meta property="og:url" content="http://aminutetorelax.com/?id=' . $id . '" />');
+            echo ('<meta property="og:image" content="' . $content . '" />');
+
+        }
+
+        ?>
+
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- http://www.iconarchive.com/show/rose-icons-by-shiftercat.html -->
         <link rel="icon" href="brown.ico" type="image/x-icon">
@@ -24,42 +63,6 @@
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
-
-        <script language="javascript">
-
-            function loadVarsInit(){
-                var vars = {};
-                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-                    vars[key] = value;
-                });
-
-                return vars;
-            }
-
-            function getHeadersFB(videoId){
-
-                var request = $.ajax({
-                    url: "http://" + window.location.hostname + "/php/" + "getInfoByVideoId.php?id="+ videoId,
-                    dataType: "script",
-                    async: true
-                });
-
-                request.success(function(data, textStatus, jqXHR){
-
-                    var oData = JSON.parse(data)[0]
-
-                    $("#head").append('<meta property="og:title" content="A minute to relax: '+ oData.title + '" />');
-                    $("#head").append('<meta property="og:type" content="video.movie" />');
-                    $("#head").append('<meta property="og:url" content="http://aminutetorelax.com/?id=' + oData.id +'" />');
-                    $("#head").append('<meta property="og:image" content="' + oData.thumbnails.thumbnail[2]._content + '" />');
-
-                });
-            }
-
-            getHeadersFB(loadVarsInit()["id"]);
-
-        </script>
-
     </head>
     <body onload="Main();">
         <!--[if lt IE 7]>
