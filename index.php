@@ -5,9 +5,12 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head id="head">
         <meta charset="utf-8">
-        <title>Mind fullness:: Watch inspiring HD videos to relax</title>
-        <meta name="keywords" content="mind fullness, a minute to relax, relax, be, mind, yoga, personal growth, spiritualism">
-        <meta name="keywords" content="This free and unobtrusive app allows you having a minute to relax watching a inspiring HD fullscreen video in your computer screen.">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>A minute to relax</title>
+        <meta name="description" content="Allow yourself to relax for a minute watching inpiring Fullscreen HD videos.">
+        <meta name="keywords" content="relax, relaxation, meditation, spirituality, Awareness, , Mindfulness, Personal growth
+    Relax video, time to relax, time to Meditation, minute relax, A minute to relax, calm, do nothing for 2 minutes,
+    do nothing">
         <meta name="viewport" content="width=device-width">
 
         <?php
