@@ -7,7 +7,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>A minute to relax</title>
-        <meta name="description" content="Allow yourself to relax for a minute watching inpiring Fullscreen HD videos.">
+        <meta name="description" content="Allow yourself to relax for a minute watching inspiring Fullscreen HD videos.">
         <meta name="keywords" content="relax, relaxation, meditation, spirituality, Awareness, , Mindfulness, Personal growth
     Relax video, time to relax, time to Meditation, minute relax, A minute to relax, calm, do nothing for 2 minutes,
     do nothing">
@@ -64,8 +64,6 @@
         <!-- vimeo url container-->
         <script type="text/javascript" src=""></script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
     </head>
     <body onload="Main();">
         <!--[if lt IE 7]>
@@ -93,13 +91,15 @@
 
         <!-- my app -->
 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/Config.js"></script>
         <script src="js/Storage.js"></script>
         <script src="js/View.js"></script>
         <script src="js/Video.js"></script>
         <script src="js/Main.js"></script>
-
+        <noscript>Allow yourself to relax for a minute watching inspiring Fullscreen HD videos.</noscript>
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

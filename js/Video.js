@@ -34,7 +34,7 @@ Video.prototype.loadVideosFromChannel = function(){
 
         Video.prototype.getThumbnails(data, textStatus, jqXHR);
 
-        if (typeof(Main.urlVars["id"]) == "undefined"){
+        if (typeof(Main.urlVars["id"]) == "undefined" && window.location.hash == ""){
             Main.video.getRandomVideo(data);
         }
     });
@@ -64,7 +64,7 @@ Video.prototype.getThumbnails = function(videos, textStatus, jqXHR){
     //schuffle the rest of the videos
     aVideos = Video.prototype.shuffleArray(aVideos);
 
-    aSliceVideos = aVideos;
+    var aSliceVideos = aVideos;
 //    if (aVideos.length >= 20){
 //        var aSliceVideos = aVideos.slice(0,17); //get 17
 //    }

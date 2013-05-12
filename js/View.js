@@ -76,7 +76,7 @@ View.prototype.drawThumbnailsSidebarDeprecated = function (aThumbs, aVideosThumb
          img.setAttribute("id","imgThumbs-" + i);
          img.setAttribute("class","imgThumbs-" + i);
         //TODO better way to attach event centralizing into Main.
-         img.setAttribute("onclick","View.prototype.showVideo('"+ aVideosThumbs[i] +"')");
+         //img.setAttribute("onclick","View.prototype.showVideo('"+ aVideosThumbs[i] +"')");
 
          $("#st_thumbs").append(img);
     });
@@ -121,6 +121,9 @@ View.prototype.makeScrollable =  function (outer, $inner){
 }
 View.prototype.showVideo = function (video){
 
+    var conf = new Config();
+    window.location.href = conf.cannonicalUrl + video;
+
     var v = new Video();
 
     //set and return finakl url
@@ -132,6 +135,7 @@ View.prototype.showVideo = function (video){
     }
 
     Video.prototype.getVideo(ov);
+
 }
 
 /**

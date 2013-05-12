@@ -28,10 +28,16 @@ var Main = (function(){
         init: function () {
 
             //load video if exists Id. else we load it after ask for loadVideosFromChannel.
-            if (typeof(Main.urlVars["id"]) != "undefined"){
+
+            if (typeof(Main.urlVars["id"]) != "undefined" || window.location.hash != ""){
 
                 //set and return final url
-                var videoUrl = 'http://www.vimeo.com/' + Main.urlVars["id"];
+                var param;
+                (window.location.hash != "") ?
+                    param = window.location.hash.slice(1):
+                    param = Main.urlVars["id"];
+
+                var videoUrl = 'http://www.vimeo.com/' + param;
 
                 var ov = {
                     videoUrl: videoUrl,
@@ -114,6 +120,7 @@ var Main = (function(){
         },
 
         getUrlVars: function(){
+
             var vars = {};
             var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
                 vars[key] = value;
