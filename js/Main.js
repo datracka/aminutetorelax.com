@@ -81,6 +81,8 @@ var Main = (function(){
             
 
             cWindow.resize(Main.prototype.resizeScreenElements);
+            cWindow.on('mousemove',Main.prototype.onMouseMove);
+            cWindow.on('mousestop',Main.prototype.onMouseStop);
 
             sidebar.hover(Main.prototype.showSidebar, Main.prototype.hideSidebar);
             hidedHeader.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
@@ -89,6 +91,26 @@ var Main = (function(){
             $(".wrapper").fadeIn(2000);
 
         },
+
+//        onMouseMove: function(){
+//            console.log("hi " + "div.fb-like").css("display");
+//            if( $("div.fb-like").css("display") == "none")
+//            {
+//                $("div.fb-like").delay(1000).show(1000);
+//                console.log("muestro!");
+//            }
+//
+//        },
+//
+//        onMouseStop: function(){
+//            console.log($("div.fb-like").css("display"));
+//            if( $("div.fb-like").css("display") == "inline")
+//            {
+//                $("div.fb-like").delay(1000).hide(1000);
+//                console.log("oculto!");
+//            }
+//
+//        },
 
         resizeScreenElements: function(){
 

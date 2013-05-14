@@ -20,7 +20,7 @@
         include "php/VimeoApi.php";
 
 
-        if (!is_null($_GET['id']) && $_GET['id'] != "")
+        if (isset($_GET['id']))
         {
 
             $vimeo = new phpVimeo(
@@ -71,23 +71,32 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <a target="_blank" href="http://meerkat.aminutetorelax.com" style="text-decoration: none">
-            <div id="closeHeader" class="closeHeader">Pst!, Check out here our free app
-               <u>Meerkat</u> to watch inspiring videos at all times!</div>
-            <div id="hidedHeader" class="hidedHeader"></div>
-        </a>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=114844025327528";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+            <a target="_blank" href="http://meerkat.aminutetorelax.com" style="text-decoration: none">
+                <div id="closeHeader" class="closeHeader">Pst!, Check out here our free app
+                   <u>Meerkat</u> to watch inspiring videos at all times!</div>
+                <div id="hidedHeader" class="hidedHeader"></div>
+            </a>
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
                     Just loading video... <img id="loading" class="loading" src="img/ajax-loader.gif"/>
                 </div>
             </div>
-            <div id="embed" class="wrapper">
-            </div>
+            <div id="embed" class="wrapper"></div>
             <div class="st_thumbs_wrapper" id="st_thumbs_wrapper">
                 <div class="st_thumbs" id="st_thumbs">
                 </div>
             </div>
+        <div class="fb-like" data-href="http://aminutetorelax.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
 
         <!-- my app -->
 

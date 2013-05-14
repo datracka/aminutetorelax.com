@@ -146,7 +146,7 @@ View.prototype.showVideo = function (video){
 View.prototype.embedVideo = function (video){
 
     $('#loadingBackground').fadeOut(1000,function(){
-        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).fadeIn(500);
+        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).delay(500).fadeIn(500);
     });
 
 }
