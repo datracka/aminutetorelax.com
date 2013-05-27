@@ -197,7 +197,34 @@ textarea {
     cursor: pointer;
 }
 
+.facebook{
+    background: url(/img/facebook_19.png) no-repeat center center;
+    position: absolute;
+    left: 90px;
+    top: 10px;
+    width: 19px;
+    height: 19px;
+    cursor: pointer;
 
+}
+
+.facebook:hover{
+    background: url(/img/facebook_19_on.png) no-repeat center center;
+}
+
+.twitter{
+    background: url(/img/twitter_19.png) no-repeat center center;
+    left: 118px;
+    top: 10px;
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.twitter:hover{
+    background: url(/img/twitter_19_on.png) no-repeat center center;
+}
 
 
 /* side bar */

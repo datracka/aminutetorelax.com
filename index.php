@@ -72,6 +72,8 @@
 
         <!-- Add your site or application content here -->
         <div id="fb-root"></div>
+
+<!--        <div id="twitter"></div>-->
         <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -97,7 +99,8 @@
                 </div>
             </div>
         <div class="fb-like" data-href="http://aminutetorelax.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
-
+        <a id="facebook" class="facebook" href="http://www.facebook.com/aminutetorelax" target="_blank"></a>
+        <a id="twitter" class="twitter" href="http://www.twitter.com/aminutetorelax" target="_blank"></a>
         <!-- my app -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
