@@ -105,6 +105,7 @@ textarea {
      height: 100%;
      overflow: hidden;
      display: none;
+    z-index: 1;
  }
 
 .wrapperLoading{
@@ -122,6 +123,7 @@ textarea {
     visibility: visible;
     display: block;
     cursor: pointer;
+    z-index:3;
 
 }
 
@@ -151,23 +153,9 @@ textarea {
 
 }
 
-.hidedHeader{
-    z-index: 101;
-    opacity: 0;
-    width: 60%;
-    height: 70px;
-    position: relative;
-    cursor:pointer;
-    background-color: #000;
-    text-align: center;
-    margin: 0 auto;
-    position: relative;
-    text-decoration: none;
-}
-
 .loadingBackground{
 
-   z-index: 99;
+   z-index: 1;
 
    font-family: verdana;
    font-size: 16pt;
@@ -189,6 +177,7 @@ textarea {
     visibility: visible;
     line-height: 70px;
     cursor: pointer;
+
 }
 
 .loadingBackground a{
@@ -197,33 +186,81 @@ textarea {
     cursor: pointer;
 }
 
-.facebook{
-    background: url(/img/facebook_19.png) no-repeat center center;
+.menuBarWrapper{
     position: absolute;
-    left: 90px;
-    top: 10px;
+    background-image: url(/img/pixel_traspa.png);
+    width: 100%;
+    height: 100px;
+    z-index: 2;
+    top: 0px;
+    left: -2px;
+    margin-top: -50px;
+    display: block;
+    background-color: transparent;
+
+
+
+}
+.menuBar{
+
+    width: 545px;
+    height: 50px;
+    opacity: 0.8;
+    background-color: #343434;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    /*display: none;*/
+    margin: 0px;
+    text-align: left;
+    border-radius: 5px;
+
+}
+
+.menuBar ul{
+    padding: 0 0 0 10px;
+    margin: 0px;
+    line-height: 50px;
+}
+
+.menuBar ul li{
+    display: inline;
+    margin: 0px;
+    padding: 0 0 0 25px;
+    text-align: -webkit-match-parent;
+}
+
+#img_fb{
+    display: inline;
+    margin-top: -2px;
     width: 19px;
     height: 19px;
     cursor: pointer;
-
+    z-index: 3;
 }
 
-.facebook:hover{
-    background: url(/img/facebook_19_on.png) no-repeat center center;
-}
-
-.twitter{
-    background: url(/img/twitter_19.png) no-repeat center center;
-    left: 118px;
-    top: 10px;
+#img_twitter{
+    display: inline;
+    margin-top: -2px;
     width: 19px;
     height: 19px;
-    position: absolute;
     cursor: pointer;
+    z-index: 3;
 }
 
-.twitter:hover{
-    background: url(/img/twitter_19_on.png) no-repeat center center;
+.menuBar ul li#first{
+    padding: 0 0 0 70px;
+}
+.menuBar ul li a{
+    font-family: "Proxima Nova",sans-serif;
+    text-decoration: none;
+    font-weight: 300;
+    color: #b3b3b3;
+
+}
+
+.menuBar ul li a:hover{
+    color: #fff;
 }
 
 
@@ -238,6 +275,7 @@ textarea {
     opacity: 0;
     top: 1px;
     right: 0px;
+    z-index: 3;
 }
 
 .st_thumbs {
@@ -272,10 +310,18 @@ textarea {
 /* end sidebar */
 
 div.fb-like{
+    z-index: 4;
     position: absolute;
+    top: 5px;
     left: 10px;
-    top: 10px;
     /*display:none;*/
+}
+
+.ultralayer{
+    width: 100%;
+    height: 100%;
+    position:fixed;
+    z-index:2;
 }
 
 

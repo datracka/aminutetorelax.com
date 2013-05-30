@@ -117,7 +117,7 @@ Video.prototype.getThumbnailByVideoId = function(videoId, element){
  */
 Video.prototype.getRandomVideo = function (videos) {
 
-    var v = null;
+    var videoId = null;
     var t = null;
     var rn = null;
     var ov = null;
@@ -133,11 +133,11 @@ Video.prototype.getRandomVideo = function (videos) {
     v = "22439234"; //default video
     if(av.length >0){
         rn = Math.floor(Math.random()*aLength);
-        v = av[rn];
+        videoId = av[rn];
     }
 
     //set and return finakl url
-    var videoUrl = 'http://www.vimeo.com/' + v;
+    var videoUrl = 'http://www.vimeo.com/' + videoId;
 
     ov = {
         videoUrl: videoUrl,
@@ -146,6 +146,8 @@ Video.prototype.getRandomVideo = function (videos) {
 
     //Request video
     Video.prototype.getVideo(ov);
+    //get Info video for sharing
+    Video.prototype.getInfoVideo(videoId);
 };
 
 /**
@@ -178,7 +180,8 @@ Video.prototype.getInfoVideo = function (videoId){
     });
 
     request.success(function(data, textStatus, jqXHR){
-        View.prototype.drawCustomHeaders(data);
+        //set the library in the library for later uses
+        Main.library.set("oVideo", JSON.parse(data));
     });
 }
 

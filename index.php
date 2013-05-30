@@ -71,6 +71,7 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
+<!--        <div id="ultralayer" class="ultralayer" style="width: 100%; height: 100%; position: fixed;"></div>-->
         <div id="fb-root"></div>
 
 <!--        <div id="twitter"></div>-->
@@ -82,11 +83,6 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
 
-            <a target="_blank" href="http://meerkat.aminutetorelax.com" style="text-decoration: none">
-                <div id="closeHeader" class="closeHeader">Pst!, Check out here our free app
-                   <u>Meerkat</u> to watch inspiring videos at all times!</div>
-                <div id="hidedHeader" class="hidedHeader"></div>
-            </a>
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
@@ -98,9 +94,27 @@
                 <div class="st_thumbs" id="st_thumbs">
                 </div>
             </div>
-        <div class="fb-like" data-href="http://aminutetorelax.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div>
-        <a id="facebook" class="facebook" href="http://www.facebook.com/aminutetorelax" target="_blank"></a>
-        <a id="twitter" class="twitter" href="http://www.twitter.com/aminutetorelax" target="_blank"></a>
+
+        <div id="menuBarWrapper" class="menuBarWrapper" style="">
+                        <div id="menuBar" class="menuBar" >
+                            <ul>
+                                <li><div class="fb-like" data-href="http://aminutetorelax.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div></li>
+                                <li id="first"><a id="share_on_fb" href="javascript:return false">share on FB</a></li>
+                                <li><a id="share_on_tw" href="javascript:return false">share on Twitter</a></li>
+                                <li><a href="http://meerkat.aminutetorelax.com" target="_blank">Meerkat</a></li>
+                                <li id="list_fb">
+                                    <a id="facebook" class="facebook" href="http://facebook.com/aminutetorelax" target="_blank">
+                                         <img id="img_fb" src="/img/facebook_19_on.jpg"/>
+                                    </a>
+                                </li>
+                                <li id="list_twitter">
+                                    <a id="twitter" class="twitter" href="http://twitter.com/aminutetorelax" target="_blank">
+                                        <img id="img_twitter" src="/img/twitter_19_on.jpg"/>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+        </div>
         <!-- my app -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -112,7 +126,7 @@
         <script src="js/Video.js"></script>
         <script src="js/Main.js"></script>
         <noscript>Allow yourself to relax for a minute watching inspiring Fullscreen HD videos.</noscript>
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
         <script>
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

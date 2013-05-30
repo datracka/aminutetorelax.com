@@ -119,22 +119,26 @@ View.prototype.makeScrollable =  function (outer, $inner){
         outer.scrollTop(top);
     });
 }
-View.prototype.showVideo = function (video){
+
+View.prototype.showVideo = function (videoId){
 
     var conf = new Config();
-    window.location.href = conf.cannonicalUrl + video;
+    window.location.href = conf.cannonicalUrl + videoId;
 
     var v = new Video();
 
     //set and return finakl url
-    var videoUrl = 'http://www.vimeo.com/' + video;
+    var videoUrl = 'http://www.vimeo.com/' + videoId;
 
     var ov = {
         videoUrl: videoUrl,
         videoTiming: 0
     }
 
+    //get video for embed it
     Video.prototype.getVideo(ov);
+    //get Info video for sharing
+    Video.prototype.getInfoVideo(videoId);
 
 }
 
@@ -151,20 +155,5 @@ View.prototype.embedVideo = function (video){
 
 }
 
-/**
- * Draw custom headers into DOM for FB
- *
- * @param data
- */
-View.prototype.drawCustomHeaders = function(data){
-
-    var oData = JSON.parse(data)[0]
-
-    $("#head").append('<meta property="og:title" content="A minute to relax: '+ oData.title + '" />');
-    $("#head").append('<meta property="og:type" content="video.movie" />');
-    $("#head").append('<meta property="og:url" content="http://aminutetorelax.com/?id=' + oData.id +'" />');
-    $("#head").append('<meta property="og:image" content="' + oData.thumbnails.thumbnail[2]._content + '" />');
-
-}
 
 
