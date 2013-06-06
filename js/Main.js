@@ -18,17 +18,17 @@ var Main = (function(){
     Main.video = null;
     Main.view = null;
     Main.urlVars = null;
-
-//    Main.aVideosThumbs = []
-//    Main.aThumbs = []  //array thumbs
-//    Main.videos = null //videos
-
-
     Main.timeout = null;
+
+    Main.flagResize = 0;
 
     Main.prototype = {
 
         init: function () {
+
+            //Load twitter quote
+            var t = new Twitter();
+            t.getPostByUserName();
 
             //load video if exists Id. else we load it after ask for loadVideosFromChannel.
 
@@ -176,7 +176,7 @@ var Main = (function(){
 
             FB.ui(obj, Main.prototype.fbCallback());
 
-            e.preventDefault();
+
         },
 
 
@@ -188,6 +188,19 @@ var Main = (function(){
 
             $('.wrapper iframe').css('height', $(window).height() + 'px');
             $('.wrapper iframe').css('width', $(window).width() + 'px');
+
+
+//            if ($(window).width() > 768 && Main.flagResize != 1){
+//                View.prototype.makeScrollable(150);
+//                console.log("bigger");
+//                this.flagResize = 1;
+//            }
+//
+//            if ($(window).width() <= 768 && Main.flagResize != 2){
+//                View.prototype.makeScrollable(100);
+//                console.log("smaller");
+//                this.flagResize = 2;
+//            }
         },
 
         showSidebar: function () {

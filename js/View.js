@@ -27,15 +27,7 @@ View.prototype.drawThumbnailsSidebar = function (videos){
 
     })
 
-    var elem 			= $('body');
-    var thumbs_wrapper = elem.find('.st_thumbs_wrapper');
-    var thumbs 		= elem.find('.st_thumbs');
-    //each thumb has 180px and we add 3 of margin
-    var finalH 			= thumbs.find('div').length * 150;
-    thumbs.css('height', finalH + 'px');
-    thumbs_wrapper.css('height', ($(window).height() - 42) + 'px');
-
-    View.prototype.makeScrollable(thumbs_wrapper,thumbs);
+    View.prototype.makeScrollable(150);
 
 }
 
@@ -53,70 +45,50 @@ View.prototype.drawImageThumbnail = function(el, data){
         $(el).css("background-image","none");
 
         var img = document.createElement("img");
-        img.setAttribute("id","imgThumbs-" + el.id);
-        img.setAttribute("class","imgThumbs");
+        img.setAttribute("id","big-" + el.id);
+        img.setAttribute("class","imgThumbsBig");
         img.setAttribute("src",JSON.parse(data)[1]._content);
+        $(el).append(img);
+
+        var img = document.createElement("img");
+        img.setAttribute("id","Small-" + el.id);
+        img.setAttribute("class","imgThumbsSmall");
+        img.setAttribute("src",JSON.parse(data)[0]._content);
         $(el).append(img);
 
     }).fadeTo('slow', 1);
 
 }
-/**
- *
- * draw right thumbnails sidebar.
- * @param aThumbs
- * @param aVideosThumbs
- */
-View.prototype.drawThumbnailsSidebarDeprecated = function (aThumbs, aVideosThumbs){
 
-    $(aThumbs).each(function(i,e){
-
-         var img = document.createElement("img");
-         img.setAttribute("src",e);
-         img.setAttribute("id","imgThumbs-" + i);
-         img.setAttribute("class","imgThumbs-" + i);
-        //TODO better way to attach event centralizing into Main.
-         //img.setAttribute("onclick","View.prototype.showVideo('"+ aVideosThumbs[i] +"')");
-
-         $("#st_thumbs").append(img);
-    });
-
-    var elem 			= $('body');
-    var thumbs_wrapper = elem.find('.st_thumbs_wrapper');
-    var thumbs 		= elem.find('.st_thumbs');
-    //each thumb has 180px and we add 3 of margin
-    var finalH 			= thumbs.find('img').length * 150;
-    thumbs.css('height', finalH + 'px');
-    thumbs_wrapper.css('height', ($(window).height() - 42) + 'px');
-
-    //View.prototype.makeScrollable(thumbs_wrapper,thumbs);
-
-}
 
 /**
  *
  * makes the thumbs div scrollable
- * on mouse move the div scrolls automatically
- * @param outer
- * @param $inner
+ * on mouse move the div scrol
+
  */
-View.prototype.makeScrollable =  function (outer, $inner){
+View.prototype.makeScrollable =  function (heightImage){
+
+    var thumbs_wrapper  = $('body').find('.st_thumbs_wrapper');
+    var thumbs 		    = $('body').find('.st_thumbs');
+    //each thumb has 180px and we add 3 of margin
+    var finalH 			= thumbs.find('div').length * heightImage;
+
+    thumbs.css('height', finalH + 'px');
+    thumbs_wrapper.css('height', ($(window).height() - 42) + 'px');
 
     var extra 			= 100;
     //Get menu width
-    var divHeight = outer.height();
-    //Remove scrollbars
-    outer.css({
-        overflow: 'hidden'
-    });
+    var thumbsWrapperHeight = thumbs_wrapper.height();
+
     //Find last image in container
-    var lastElem = $inner.find('div:last');
-    outer.scrollTop(0);
+    var lastElem = thumbs.find('div:last');
+    thumbs_wrapper.scrollTop(0);
     //When user move mouse over menu
-    outer.unbind('mousemove').bind('mousemove',function(e){
-        var containerHeight = lastElem[0].offsetTop + lastElem.outerHeight() + 2*extra;
-        var top = (e.pageY - outer.offset().top) * (containerHeight-divHeight) / divHeight - extra;
-        outer.scrollTop(top);
+    thumbs_wrapper.unbind('mousemove').bind('mousemove',function(e){
+        var containerHeight = lastElem[0].offsetTop + lastElem.outerHeight() + 2 * extra;
+        var top = (e.pageY - thumbs_wrapper.offset().top) * (containerHeight-thumbsWrapperHeight) / thumbsWrapperHeight - extra;
+        thumbs_wrapper.scrollTop(top);
     });
 }
 
@@ -149,8 +121,8 @@ View.prototype.showVideo = function (videoId){
  */
 View.prototype.embedVideo = function (video){
 
-    $('#loadingBackground').fadeOut(1000,function(){
-        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).delay(500).fadeIn(500);
+    $('#loadingBackground').delay(6000).fadeOut(1000,function(){
+       $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).hide().delay(500).fadeIn(500);
     });
 
 }

@@ -158,7 +158,7 @@ textarea {
    z-index: 1;
 
    font-family: verdana;
-   font-size: 16pt;
+
    text-align: center;
    color: #fefefe;
    font-size: 14pt;
@@ -167,15 +167,15 @@ textarea {
     font-family: Verdana, Geneva, Arial, sans-serif;
 
     background-color: transparent;
-    margin-left: -425px;
+    margin-left: -300px;
     position: absolute;
     top: -35px;
     left: 50%;
-    width: 850px;
-    height: 70px;
+    width: 600px;
+    /*height: 70px;*/
 
     visibility: visible;
-    line-height: 70px;
+    line-height: 35px;
     cursor: pointer;
 
 }
@@ -184,6 +184,13 @@ textarea {
     color: #fefefe;
     font-weight: bold;
     cursor: pointer;
+}
+
+.loadingBackground p{
+    line-height: 35px;
+    margin: 0px;
+    padding: 0px;
+
 }
 
 .menuBarWrapper{
@@ -324,6 +331,11 @@ div.fb-like{
     z-index:2;
 }
 
+.imgThumbsSmall{
+    display: none;
+    visibility: hidden;
+}
+
 
 
 
@@ -344,18 +356,101 @@ div.fb-like{
 
 @media all and (max-width: 768px) {
     /* styles for narrower desktop browsers and iPad portrait */
+
+    .loadingBackground{
+        margin-left: -200px;
+        width: 400px;
+    }
+
+    .loadingBackground p{
+        font-size: 12px;
+        line-height: 25px;
+    }
+
+    .imgThumbsSmall{
+        display: block;
+        visibility: visible;
+    }
+
+    .imgThumbsBig{
+        display: none;
+        visibility: hidden;
+    }
+
+    .st_thumbs_wrapper{
+        width: 100px;
+    }
+
+    .st_thumbs div{
+        width: 100px;
+        height: 75px;
+    }
+
+
+    .menuBar{
+
+        width: 370px;
+        height: 40px;
+
+    }
+
+    .menuBar ul{
+        padding: 0 0 0 20px;
+        line-height: 40px;
+    }
+
+    .menuBar ul li{
+        padding: 0 0 0 10px;
+    }
+
+    #list_fb{
+        display: none;
+    }
+
+    #list_twitter{
+        display: none;
+    }
+
+    .menuBar ul li#first{
+        padding: 0 0 0 70px;
+    }
+
+    .menuBar ul li a{
+           font-size: 12px;
+    }
+
 }
 
 @media all and (max-width: 480px) {
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
+
+    .loadingBackground{
+        margin-left: -150px;
+        width: 300px;
+    }
+
+    .loadingBackground p{
+        font-size: 10px;
+        line-height: 20px;
+    }
 }
 
 @media all and (max-width: 320px) {
     /* styles for iPhone/Android portrait */
+
+
+    .loadingBackground p{
+        font-size: 8px;
+        line-height: 15px;
+    }
 }
 
 @media all and (max-width: 240px) {
     /* styles for smaller devices */
+
+    #loadingBackground p{
+        font-size: 6px;
+    }
 }
 
 

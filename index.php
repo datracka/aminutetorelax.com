@@ -86,7 +86,8 @@
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
-                    Just loading video... <img id="loading" class="loading" src="img/ajax-loader.gif"/>
+                    <p id="loading" class="loading">Just loading video... <img  src="img/ajax-loader.gif"/></p>
+                    <p id="quote"></p>
                 </div>
             </div>
             <div id="embed" class="wrapper"></div>
@@ -102,12 +103,12 @@
                                 <li id="first"><a id="share_on_fb" href="javascript:return false">share on FB</a></li>
                                 <li><a id="share_on_tw" href="javascript:return false">share on Twitter</a></li>
                                 <li><a href="http://meerkat.aminutetorelax.com" target="_blank">Meerkat</a></li>
-                                <li id="list_fb">
+                                <li id="list_fb" class="list_fb">
                                     <a id="facebook" class="facebook" href="http://facebook.com/aminutetorelax" target="_blank">
                                          <img id="img_fb" src="/img/facebook_19_on.jpg"/>
                                     </a>
                                 </li>
-                                <li id="list_twitter">
+                                <li id="list_twitter" class="list_twitter">
                                     <a id="twitter" class="twitter" href="http://twitter.com/aminutetorelax" target="_blank">
                                         <img id="img_twitter" src="/img/twitter_19_on.jpg"/>
                                     </a>
@@ -124,6 +125,7 @@
         <script src="js/Storage.js"></script>
         <script src="js/View.js"></script>
         <script src="js/Video.js"></script>
+        <script src="js/Twitter.js"></script>
         <script src="js/Main.js"></script>
         <noscript>Allow yourself to relax for a minute watching inspiring Fullscreen HD videos.</noscript>
 
