@@ -169,6 +169,29 @@ Video.prototype.getVideo =  function (oVideo) {
 
 };
 
+/**
+ * TODO: Thats why I dont want the delay when I show up the video the second time
+ * So, easy solution was duplicate this function and the embedVideo. But that its shit
+ * please fix it!!
+ *
+ * Request Selected video
+ *
+ * Callback embedVideo
+ *
+ */
+Video.prototype.getVideo2 =  function (oVideo) {
+
+    var url = "http://www.vimeo.com/api/oembed.json" + '?url=' + encodeURIComponent("http://www.vimeo.com/" + oVideo.videoUrl) +
+        '&callback=' + "View.prototype.embedVideo2" + //SHIIIIIIIIIIIIIIIIIIII!!!!!!!!!!!!!!!
+        '&width=' + (window.innerWidth) +
+        '&height=' + (window.innerHeight) +
+        '&autoplay=1' +
+        '&t=' + oVideo.videoTiming;
+
+    $.getScript(url);
+
+};
+
 Video.prototype.getInfoVideo = function (videoId){
 
     var oConfig = new Config();

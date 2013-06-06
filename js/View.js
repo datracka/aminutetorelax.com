@@ -94,6 +94,35 @@ View.prototype.makeScrollable =  function (heightImage){
 
 View.prototype.showVideo = function (videoId){
 
+    var d = new Date();
+    var n = d.getSeconds();
+
+    var sentence = "";
+    if (n >0 && n <= 10){
+        sentence = "Yep, just a second... ";
+    }
+    if (n >10 && n <= 20){
+        sentence = "Sir, yes sir! ";
+    }
+    if (n >20 && n <= 30){
+        sentence = "Okie dokie! ";
+    }
+    if (n >30 && n <= 40){
+        sentence = "10-4 ";
+    }
+    if (n >40 && n <= 50){
+        sentence = "coming right up ";
+    }
+    if (n >50 && n <= 60){
+        sentence = "mmh, let me see... ";
+    }
+
+
+    $('#embed').fadeOut(500).empty();
+    $('#loadingBackground').empty()
+        .append('<p id="loading" class="loading">'+ sentence +'<img  src="img/ajax-loader.gif"/></p>')
+        .hide()
+        .fadeIn(1000);
     var conf = new Config();
     window.location.href = conf.cannonicalUrl + videoId;
 
@@ -108,7 +137,7 @@ View.prototype.showVideo = function (videoId){
     }
 
     //get video for embed it
-    Video.prototype.getVideo(ov);
+    Video.prototype.getVideo2(ov); //TODO: SHIITTT!!!
     //get Info video for sharing
     Video.prototype.getInfoVideo(videoId);
 
@@ -121,11 +150,30 @@ View.prototype.showVideo = function (videoId){
  */
 View.prototype.embedVideo = function (video){
 
-    $('#loadingBackground').delay(6000).fadeOut(1000,function(){
+    $('#loadingBackground').delay(6000).fadeOut(1000,function(){ //Delay 6000 noooop always.. only first time!
+       $(this).empty();
        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).hide().delay(500).fadeIn(500);
     });
 
 }
+
+/**
+ * TODO: Thats why I dont want the delay when I show up the video the second time
+ * So, easy solution was duplicate this function and the getVideo. But that its shit
+ * please fix it!!
+ *
+ * Callback from Video.prototype.getVideo
+ * @param video
+ */
+View.prototype.embedVideo2 = function (video){
+
+    $('#loadingBackground').fadeOut(1000,function(){
+        $(this).empty();
+        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).hide().delay(500).fadeIn(500);
+    });
+
+}
+
 
 
 
