@@ -421,6 +421,23 @@ div.fb-like{
 
 }
 
+@media all and (max-width: 685px) {
+
+    .st_thumbs_wrapper{
+        display:none;
+    }
+
+    .loadingBackground{
+        margin-left: -150px;
+        width: 300px;
+    }
+
+    .loadingBackground p{
+        font-size: 10px;
+        line-height: 20px;
+    }
+}
+
 @media all and (max-width: 480px) {
     /* styles for iPhone/Android landscape (and really narrow browser windows) */
 

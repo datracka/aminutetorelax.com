@@ -32,7 +32,11 @@ Video.prototype.loadVideosFromChannel = function(){
 
     request.success(function(data, textStatus, jqXHR){
 
-        Video.prototype.getThumbnails(data, textStatus, jqXHR);
+        //for mobile we don't load the sidebar in order to save bandwidth.
+        if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) ) {
+            Video.prototype.getThumbnails(data, textStatus, jqXHR);
+
+        }
 
         if (typeof(Main.urlVars["id"]) == "undefined" && window.location.hash == ""){
             Main.video.getRandomVideo(data);
