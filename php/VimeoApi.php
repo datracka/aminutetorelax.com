@@ -32,16 +32,17 @@ class VimeoApi extends phpVimeo{
     /**
      * Returns a list of videos of the channel hardcoded into the attributes.
      *
+     * @param $numVideos
      * @return array
-     *
      */
-    public function getListOfVideos()
+    public function getListOfVideos($numVideos)
     {
 
         $videos = $this->call('vimeo.channels.getVideos',
             array(
                 'channel_id' => $this->channelId,
                 'user_id' => $this->userId,
+                'per_page' => $numVideos
             )
         );
 
@@ -98,7 +99,7 @@ class VimeoApi extends phpVimeo{
         $info = $this->call('vimeo.videos.getInfo',
             array(
                 'video_id' => $videoId)
-       );
+        );
 
         return $info;
 

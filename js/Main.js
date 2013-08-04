@@ -1,5 +1,7 @@
 var Main = (function(){
 
+
+
     //Constructor
     function Main(){
 
@@ -11,6 +13,7 @@ var Main = (function(){
 
         Main.prototype.init();
 
+
     }
 
     //atrributes
@@ -18,9 +21,10 @@ var Main = (function(){
     Main.video = null;
     Main.view = null;
     Main.urlVars = null;
-    Main.timeout = null;
+    Main.sThumbs = {};  //store the thumbs gathered from server
 
-    Main.flagResize = 0;
+
+    Main.timeout = null;
 
     Main.prototype = {
 
@@ -31,8 +35,14 @@ var Main = (function(){
             t.getPostByUserName();
 
             //load video if exists Id. else we load it after ask for loadVideosFromChannel.
+            Main.video = new Video();
+            Main.video.loadVideosFromChannel(50);
 
+            //Mode Full screen
             if (typeof(Main.urlVars["id"]) != "undefined" || window.location.hash != ""){
+
+                $("#playerContent").show();
+                $("#siteContent").hide();
 
                 //set and return final url
                 var param;
@@ -48,11 +58,15 @@ var Main = (function(){
                 }
 
                 Video.prototype.getInfoVideo(idVideo);
-                Video.prototype.getVideo(ov);
-            }
+                Video.prototype.getEmbeddedVideo(ov, window.innerWidth, window.innerHeight, 1,  "View.prototype.embedVideoFS");
+            }else{
 
-            Main.video = new Video();
-            Main.video.loadVideosFromChannel();
+                $("#playerContent").hide();
+                $("#siteContent").show();
+
+                Video.prototype.getLastVideoFromChannel();
+
+            }
 
         },
 
@@ -176,7 +190,7 @@ var Main = (function(){
 
             FB.ui(obj, Main.prototype.fbCallback());
 
-
+            e.preventDefault();
         },
 
 
@@ -188,19 +202,6 @@ var Main = (function(){
 
             $('.wrapper iframe').css('height', $(window).height() + 'px');
             $('.wrapper iframe').css('width', $(window).width() + 'px');
-
-
-//            if ($(window).width() > 768 && Main.flagResize != 1){
-//                View.prototype.makeScrollable(150);
-//                console.log("bigger");
-//                this.flagResize = 1;
-//            }
-//
-//            if ($(window).width() <= 768 && Main.flagResize != 2){
-//                View.prototype.makeScrollable(100);
-//                console.log("smaller");
-//                this.flagResize = 2;
-//            }
         },
 
         showSidebar: function () {
@@ -231,10 +232,10 @@ var Main = (function(){
                 vars[key] = value;
             });
 
-           return vars;
+            return vars;
         }
 
-}
+    }
     return Main;
 }());
 

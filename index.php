@@ -59,7 +59,9 @@
         <link rel="apple-touch-icon" href="brown.png">
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/player.css">
+        <link rel="stylesheet" href="css/website.css">
+        <link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <!-- vimeo url container-->
         <script type="text/javascript" src=""></script>
@@ -70,8 +72,74 @@
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
 
-        <!-- Add your site or application content here -->
-<!--        <div id="ultralayer" class="ultralayer" style="width: 100%; height: 100%; position: fixed;"></div>-->
+    <!-- Add your site or application content here -->
+
+    <div id="siteContent" style="position: absolute; width: 100%; height: 100%; display: none; ">
+        <div id="share" class="share">
+            <div id="shareWrapper" class="shareWrapper">
+                <a href="http://www.facebook.com/aminutetorelax" id="linkToFb" class="linkToFb" target="_blank">
+                    <img src="img/facebook.jpg" id="facebook" class="facebook" style="padding:2px" title="Like us on facebook"/>
+                </a>
+                <a href="http://www.twitter.com/aminutetorelax" id="linkToTw" class="linkToTw" target="_blank">
+                    <img src="img/twitter.jpg" id="twitter" class="twitter" style="padding:2px" title="Follow us on twitter"/>
+                </a>
+            </div>
+        </div>
+        <div id="header" class="header">
+            <div id="wrapperHeader" class="wrapperHeader">
+                <span>A minute to Relax</span>
+                <img src="img/meerkat.png" id="meerkat" class="meerkat"/>
+            </div>
+        </div>
+        <div id="content" class="content">
+            <div id="wrapperContent" class="wrapperContent">
+
+                <div id="videoBox" class="videoBox">
+
+                    <div id="videoPlayer" class="videoPlayer"></div>
+                </div>
+
+            </div>
+        </div>
+        <div id="site" class="site">
+            <div id="wrapperSite" class="wrapperSite">
+                <h2>Watch a very inspiring video which allows you to have a blackout when you need it.</h2>
+                <p id="sentence" class="sentence">Sometimes when you are in your office at your desk and you feel stressed and anxious would not you like to
+                    reset your mind?
+                    This site allows you having a minute of peace watching a random HD fullscreen video for
+                    just a minute in your computer.
+                </p>
+                <ul>
+
+                    <li>
+                        <p>
+                            Practice positive thinking. Positive thinking isn't about wishful or dreamer thinking; it's about making the most of the situations that you find yourself in and avoiding any tendency to add negative overlays.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Think logically, and restrain your emotions. If you learn to think more sequentially and logically when you're stressed, you might find that solutions become more apparent.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Find a quiet place when you are feeling overwhelmed and pamper yourself. Draw a warm, Lie on your bed or sofa, Read a good book or imagine a personal paradise.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Learn to prioritize. Make a list of tasks for the day. Organize the list by importance, and be proactive and take care of things before they become a big problem. Time spent more productively means more free time to relax.
+                        </p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="footer" class="footer">
+            <p>The Meerkat bookmark app is a free and personal project from <b>@aminutetorelax.com</b> - Feedback: <a id="email" class="email" href="mailto:dequevalavida@googlemail.com" title="dequevalavida@googlemail.com">dequevalavida@googlemail.com</a></p>
+        </div>
+    </div>
+    <div id="playerContent" style=" position: absolute; width: 100%; height: 100%; display: none; ">
         <div id="fb-root"></div>
 
 <!--        <div id="twitter"></div>-->
@@ -86,7 +154,7 @@
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
-                    <p id="loading" class="loading">Just loading video... <img  src="img/ajax-loader.gif"/></p>
+                    <p id="loading" class="loading">Loading video... <img  src="img/ajax-loader.gif"/></p>
                     <p id="quote"></p>
                 </div>
             </div>
@@ -116,6 +184,8 @@
                             </ul>
                         </div>
         </div>
+    </div>
+
         <!-- my app -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>

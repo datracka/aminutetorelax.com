@@ -337,9 +337,6 @@ div.fb-like{
 }
 
 
-
-
-
 /* Default wide-screen styles */
 
 @media all and (max-width: 1024px) {
@@ -416,7 +413,7 @@ div.fb-like{
     }
 
     .menuBar ul li a{
-           font-size: 12px;
+        font-size: 12px;
     }
 
 }
@@ -469,7 +466,6 @@ div.fb-like{
         font-size: 6px;
     }
 }
-
 
 
 

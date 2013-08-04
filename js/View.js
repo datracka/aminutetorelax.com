@@ -9,25 +9,29 @@ var View = function () {
 
 }
 
-View.prototype.drawThumbnailsSidebar = function (videos){
 
-    $.each(videos, function(i,e){
+View.prototype.drawThumbnailsSidebar = function (numVideos){
+
+    for(var i=0;i<numVideos;i++){
 
         var div = document.createElement("div");
         div.setAttribute("id","divThumbs-" + i);
         div.setAttribute("class","divThumbs");
 
-        //TODO better way to attach event centralizing into Main.
-        div.setAttribute("onclick","View.prototype.showVideo('"+ e.id +"')");
-
         $("#st_thumbs").append(div);
 
-        //load image
-        Video.prototype.getThumbnailByVideoId(e.id, div);
 
-    })
+    }
 
-    View.prototype.makeScrollable(150);
+    var elem 			= $('body');
+    var thumbs_wrapper = elem.find('.st_thumbs_wrapper');
+    var thumbs 		= elem.find('.st_thumbs');
+    //each thumb has 180px and we add 3 of margin
+    var finalH 			= thumbs.find('div').length * 150;
+    thumbs.css('height', finalH + 'px');
+    thumbs_wrapper.css('height', ($(window).height() - 42) + 'px');
+
+    View.prototype.makeScrollable(thumbs_wrapper,thumbs);
 
 }
 
@@ -38,57 +42,48 @@ View.prototype.drawThumbnailsSidebar = function (videos){
  * @param el
  * @param data
  */
-View.prototype.drawImageThumbnail = function(el, data){
+View.prototype.drawImageThumbnail = function(el, data, videoId){
 
     $(el).fadeTo('slow', 0.3, function()
     {
         $(el).css("background-image","none");
 
         var img = document.createElement("img");
-        img.setAttribute("id","big-" + el.id);
-        img.setAttribute("class","imgThumbsBig");
+        img.setAttribute("id","imgThumbs-" + el.id);
+        img.setAttribute("class","imgThumbs");
         img.setAttribute("src",JSON.parse(data)[1]._content);
-        $(el).append(img);
-
-        var img = document.createElement("img");
-        img.setAttribute("id","Small-" + el.id);
-        img.setAttribute("class","imgThumbsSmall");
-        img.setAttribute("src",JSON.parse(data)[0]._content);
+        //TODO better way to attach event centralizing into Main.
+        img.setAttribute("onclick","View.prototype.showVideo('"+ videoId +"')");
         $(el).append(img);
 
     }).fadeTo('slow', 1);
 
 }
 
-
 /**
  *
  * makes the thumbs div scrollable
- * on mouse move the div scrol
-
+ * on mouse move the div scrolls automatically
+ * @param outer
+ * @param $inner
  */
-View.prototype.makeScrollable =  function (heightImage){
-
-    var thumbs_wrapper  = $('body').find('.st_thumbs_wrapper');
-    var thumbs 		    = $('body').find('.st_thumbs');
-    //each thumb has 180px and we add 3 of margin
-    var finalH 			= thumbs.find('div').length * heightImage;
-
-    thumbs.css('height', finalH + 'px');
-    thumbs_wrapper.css('height', ($(window).height() - 42) + 'px');
+View.prototype.makeScrollable =  function (outer, $inner){
 
     var extra 			= 100;
     //Get menu width
-    var thumbsWrapperHeight = thumbs_wrapper.height();
-
+    var divHeight = outer.height();
+    //Remove scrollbars
+    outer.css({
+        overflow: 'hidden'
+    });
     //Find last image in container
-    var lastElem = thumbs.find('div:last');
-    thumbs_wrapper.scrollTop(0);
+    var lastElem = $inner.find('div:last');
+    outer.scrollTop(0);
     //When user move mouse over menu
-    thumbs_wrapper.unbind('mousemove').bind('mousemove',function(e){
-        var containerHeight = lastElem[0].offsetTop + lastElem.outerHeight() + 2 * extra;
-        var top = (e.pageY - thumbs_wrapper.offset().top) * (containerHeight-thumbsWrapperHeight) / thumbsWrapperHeight - extra;
-        thumbs_wrapper.scrollTop(top);
+    outer.unbind('mousemove').bind('mousemove',function(e){
+        var containerHeight = lastElem[0].offsetTop + lastElem.outerHeight() + 2*extra;
+        var top = (e.pageY - outer.offset().top) * (containerHeight-divHeight) / divHeight - extra;
+        outer.scrollTop(top);
     });
 }
 
@@ -136,8 +131,7 @@ View.prototype.showVideo = function (videoId){
         videoTiming: 0
     }
 
-    //get video for embed it
-    Video.prototype.getVideo2(ov); //TODO: SHIITTT!!!
+    Video.prototype.getEmbeddedVideo(ov, window.innerWidth, window.innerHeight, 1,  "View.prototype.embedVideoFS2");
     //get Info video for sharing
     Video.prototype.getInfoVideo(videoId);
 
@@ -148,24 +142,24 @@ View.prototype.showVideo = function (videoId){
  * Callback from Video.prototype.getVideo
  * @param video
  */
-View.prototype.embedVideo = function (video){
+View.prototype.embedVideoFS = function (video){
 
-    $('#loadingBackground').delay(6000).fadeOut(1000,function(){ //Delay 6000 noooop always.. only first time!
-       $(this).empty();
-       $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).hide().delay(500).fadeIn(500);
+    $('#loadingBackground').fadeOut(6000,function(){
+        $(this).empty();
+        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).delay(500).fadeIn(500);
     });
 
 }
 
 /**
- * TODO: Thats why I dont want the delay when I show up the video the second time
+ * TODO: That is why I do not want the delay when I show up the video the second time
  * So, easy solution was duplicate this function and the getVideo. But that its shit
  * please fix it!!
  *
  * Callback from Video.prototype.getVideo
  * @param video
  */
-View.prototype.embedVideo2 = function (video){
+View.prototype.embedVideoFS2 = function (video){
 
     $('#loadingBackground').fadeOut(1000,function(){
         $(this).empty();
@@ -174,6 +168,16 @@ View.prototype.embedVideo2 = function (video){
 
 }
 
+/**
+ *
+ * Callback from Video.prototype.getVideo
+ * @param video
+ */
+View.prototype.embedVideoWS = function (video) {
+
+    $('#videoPlayer').empty().append(decodeURI(video.html)).delay(500).fadeIn(500);
+
+}
 
 
 

@@ -20,28 +20,33 @@ var Video = function () {
  * @return {*}
  */
 
-Video.prototype.loadVideosFromChannel = function(){
+Video.prototype.loadVideosFromChannel = function(numVideos){
 
-    var oConfig = new Config();
+    //for mobile we don't load the sidebar in order to save bandwidth.
+    if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) ) {
 
-    var request = $.ajax({
-        url: oConfig.getServiceUrl() + "getListVideos.php",
-        dataType: "script",
-        async: true
-    });
+            //we have all the info. lets build the sidebars :)
+            v = new View();
+            v.drawThumbnailsSidebar(numVideos);
 
-    request.success(function(data, textStatus, jqXHR){
+        var oConfig = new Config();
 
-        //for mobile we don't load the sidebar in order to save bandwidth.
-        if( !(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) ) {
-            Video.prototype.getThumbnails(data, textStatus, jqXHR);
+        var request = $.ajax({
+            url: oConfig.getServiceUrl() + "getListVideos.php?numVideos=" + numVideos,
+            dataType: "script",
+            async: true
+        });
 
-        }
+        request.success(function(data, textStatus, jqXHR){
 
-        if (typeof(Main.urlVars["id"]) == "undefined" && window.location.hash == ""){
-            Main.video.getRandomVideo(data);
-        }
-    });
+            //get info needed from the list of videos
+            atotalVideosToAdd = Video.prototype.processVideos(data, textStatus, jqXHR);
+            //load image
+            Video.prototype.getThumbnails(atotalVideosToAdd);
+
+        })
+
+    }
 
 }
 
@@ -54,7 +59,7 @@ Video.prototype.loadVideosFromChannel = function(){
  * @param jqXHR
  * @param textStatus
  */
-Video.prototype.getThumbnails = function(videos, textStatus, jqXHR){
+Video.prototype.processVideos = function(videos, textStatus, jqXHR){
 
     var aVideos = JSON.parse(videos);
 
@@ -69,14 +74,9 @@ Video.prototype.getThumbnails = function(videos, textStatus, jqXHR){
     aVideos = Video.prototype.shuffleArray(aVideos);
 
     var aSliceVideos = aVideos;
-//    if (aVideos.length >= 20){
-//        var aSliceVideos = aVideos.slice(0,17); //get 17
-//    }
+    var aTotalVideos = aLastVideos.concat(aSliceVideos);
 
-    var atotalVideos = aLastVideos.concat(aSliceVideos);
-
-    Main.view = new View();
-    Main.view.drawThumbnailsSidebar(atotalVideos);
+    return aTotalVideos;
 
 }
 
@@ -92,6 +92,20 @@ Video.prototype.shuffleArray = function(o){
     for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
 }
+/**
+ * Get the thumbnails
+ *
+ * @param videos
+ */
+Video.prototype.getThumbnails = function(videos){
+
+    $.each(videos, function(i,e){
+
+        Video.prototype.getThumbnailByVideoId(e.id, i);
+
+    });
+
+}
 
 /**
  *
@@ -99,7 +113,7 @@ Video.prototype.shuffleArray = function(o){
  * @param videoId
  * @param element
  */
-Video.prototype.getThumbnailByVideoId = function(videoId, element){
+Video.prototype.getThumbnailByVideoId = function(videoId, i){
 
     var oConfig = new Config();
 
@@ -110,13 +124,25 @@ Video.prototype.getThumbnailByVideoId = function(videoId, element){
     });
 
     request.success(function(data, textStatus, jqXHR){
-        View.prototype.drawImageThumbnail(element,data);
+
+        //-->> should be inside the other function
+        currThumb = "#divThumbs-"+i;
+        View.prototype.drawImageThumbnail($(currThumb),data, videoId);
+
+
+
+        /**
+         * HERE CREATE THE drawThumbnailsWeb!!
+         */
+
     });
 }
 
 /**
+ *
  * Get the random video to show on the screen
  *
+ * @deprecated -> no random video anymore!!
  * @param videos
  */
 Video.prototype.getRandomVideo = function (videos) {
@@ -149,47 +175,58 @@ Video.prototype.getRandomVideo = function (videos) {
     }
 
     //Request video
-    Video.prototype.getVideo(ov);
+    Video.prototype.getEmbeddedVideo(ov, window.innerWidth, window.innerHeight, 1,  "View.prototype.embedVideoFS");
     //get Info video for sharing
     Video.prototype.getInfoVideo(videoId);
 };
 
+
+/**
+ *
+ * get Last video from channel
+ */
+
+Video.prototype.getLastVideoFromChannel = function(){
+
+    var oConfig = new Config();
+
+    var request = $.ajax({
+        url: oConfig.getServiceUrl() + "getListVideos.php?numVideos=1",
+        dataType: "script",
+        async: true
+    });
+
+    request.success(function(data, textStatus, jqXHR){
+
+
+        var videoUrl = 'http://www.vimeo.com/' + JSON.parse(data)[0].id;
+
+
+        var ov = {
+            videoUrl: videoUrl,
+            videoTiming: 0 //don't use timing at the moment
+        }
+
+        Video.prototype.getEmbeddedVideo(ov, 960, 540, 0,  "View.prototype.embedVideoWS");
+
+    })
+
+
+}
+
 /**
  * Request Selected video
  *
  * Callback embedVideo
  *
  */
-Video.prototype.getVideo =  function (oVideo) {
+Video.prototype.getEmbeddedVideo =  function (oVideo, width, height, autoPlay, callBack) {
 
     var url = "http://www.vimeo.com/api/oembed.json" + '?url=' + encodeURIComponent("http://www.vimeo.com/" + oVideo.videoUrl) +
-        '&callback=' + "View.prototype.embedVideo" +
-        '&width=' + (window.innerWidth) +
-        '&height=' + (window.innerHeight) +
-        '&autoplay=1' +
-        '&t=' + oVideo.videoTiming;
-
-    $.getScript(url);
-
-};
-
-/**
- * TODO: Thats why I dont want the delay when I show up the video the second time
- * So, easy solution was duplicate this function and the embedVideo. But that its shit
- * please fix it!!
- *
- * Request Selected video
- *
- * Callback embedVideo
- *
- */
-Video.prototype.getVideo2 =  function (oVideo) {
-
-    var url = "http://www.vimeo.com/api/oembed.json" + '?url=' + encodeURIComponent("http://www.vimeo.com/" + oVideo.videoUrl) +
-        '&callback=' + "View.prototype.embedVideo2" + //SHIIIIIIIIIIIIIIIIIIII!!!!!!!!!!!!!!!
-        '&width=' + (window.innerWidth) +
-        '&height=' + (window.innerHeight) +
-        '&autoplay=1' +
+        '&callback=' + callBack +
+        '&width=' + width +
+        '&height=' + height +
+        '&autoplay=' + autoPlay +
         '&t=' + oVideo.videoTiming;
 
     $.getScript(url);

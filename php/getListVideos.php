@@ -5,5 +5,5 @@ include "VimeoApi.php";
 
 $oVimeoApi = new VimeoApi();
 
-$oVideos = $oVimeoApi->getListOfVideos();
+$oVideos = $oVimeoApi->getListOfVideos($_GET['numVideos']);
 echo json_encode($oVideos->videos->video);
