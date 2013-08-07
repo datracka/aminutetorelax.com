@@ -32,7 +32,7 @@ Video.prototype.loadVideosFromChannel = function(numVideos){
         var oConfig = new Config();
 
         var request = $.ajax({
-            url: oConfig.getServiceUrl() + "getListVideos.php?numVideos=" + numVideos,
+            url: oConfig.getServiceUrl() + "getListVideos.php?numVideos=" + (numVideos+1),
             dataType: "script",
             async: true
         });
@@ -46,6 +46,8 @@ Video.prototype.loadVideosFromChannel = function(numVideos){
 
         })
 
+    }else{ //if mobile don't show the sidebar thumbnails.
+        $("#st_thumbs_wrapper").hide();
     }
 
 }

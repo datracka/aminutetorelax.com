@@ -109,24 +109,29 @@
                     This site allows you having a minute of peace watching a random HD fullscreen video for
                     just a minute in your computer.
                 </p>
+                <h2 style="text-align: left; margin-bottom: 10px; font-family: 'Loved by the King', cursive; font-size: 24px;">Other hints for Relaxing:</h2>
                 <ul>
 
                     <li>
+                        <img class="bulb2"  src="img/bulb2.png" />
                         <p>
                             Practice positive thinking. Positive thinking isn't about wishful or dreamer thinking; it's about making the most of the situations that you find yourself in and avoiding any tendency to add negative overlays.
                         </p>
                     </li>
                     <li>
+                        <img class="bulb2"  src="img/bulb2.png" />
                         <p>
                             Think logically, and restrain your emotions. If you learn to think more sequentially and logically when you're stressed, you might find that solutions become more apparent.
                         </p>
                     </li>
                     <li>
+                        <img class="bulb2"  src="img/bulb2.png"/>
                         <p>
                             Find a quiet place when you are feeling overwhelmed and pamper yourself. Draw a warm, Lie on your bed or sofa, Read a good book or imagine a personal paradise.
                         </p>
                     </li>
                     <li>
+                        <img class="bulb2"  src="img/bulb2.png" />
                         <p>
                             Learn to prioritize. Make a list of tasks for the day. Organize the list by importance, and be proactive and take care of things before they become a big problem. Time spent more productively means more free time to relax.
                         </p>

@@ -144,9 +144,9 @@ View.prototype.showVideo = function (videoId){
  */
 View.prototype.embedVideoFS = function (video){
 
-    $('#loadingBackground').fadeOut(6000,function(){
+    $('#loadingBackground').delay(6000).fadeOut(2000,function(){
         $(this).empty();
-        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).delay(500).fadeIn(500);
+        $('#embed').fadeOut(500).empty().append(decodeURI(video.html)).fadeIn(500);
     });
 
 }
