@@ -59,7 +59,7 @@
         <link rel="apple-touch-icon" href="brown.png">
 
         <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/player.css">
+<!--        <link rel="stylesheet" href="css/player.css">-->
         <link rel="stylesheet" href="css/website.css">
         <link href='http://fonts.googleapis.com/css?family=Loved+by+the+King' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
@@ -74,7 +74,7 @@
 
     <!-- Add your site or application content here -->
 
-    <div id="siteContent" style="position: absolute; width: 100%; height: 100%; display: none; ">
+    <div id="siteContent" style="position: absolute; width: 100%; height: 100%">
         <div id="share" class="share">
             <div id="shareWrapper" class="shareWrapper">
                 <a href="http://www.facebook.com/aminutetorelax" id="linkToFb" class="linkToFb" target="_blank">

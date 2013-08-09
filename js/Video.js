@@ -209,7 +209,7 @@ Video.prototype.getLastVideoFromChannel = function(){
             videoTiming: 0 //don't use timing at the moment
         }
 
-        Video.prototype.getEmbeddedVideo(ov, 960, 540, 0,  "View.prototype.embedVideoWS");
+        Video.prototype.getEmbeddedVideo(ov, $("#videoPlayer").width(), $("#videoPlayer").height(), 0,  "View.prototype.embedVideoWS");
 
     })
 

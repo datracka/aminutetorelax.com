@@ -1,8 +1,8 @@
 
 body{
-
     overflow: auto;
     text-align: center;
+    font-size: 100%;
 }
 .share{
     height: 30px;
@@ -10,9 +10,10 @@ body{
 }
 
 .shareWrapper{
+    width:1020px;
+
     height: 30px;
     background-color: #efefef;
-    width:1020px;
     margin: 0 auto;
     text-align: right;
     text-decoration: none;
@@ -24,12 +25,13 @@ body{
 }
 
 .wrapperHeader{
-    margin: 0 auto;
     width: 1020px;
+
+    margin: 0 auto;
     padding-top: 20px;
     position: relative;
     font-family: 'Loved by the King', cursive;
-    font-size: 62px;
+    font-size: 4em;
     color: #000;
 }
 
@@ -70,10 +72,10 @@ body{
 
 .videoPlayer{
     width: 960px;
+
     height: 540px;
     background-color: white;
     text-align: center;
-    line-height: 315px;
     border: 1px solid #000;
 
 }
@@ -82,6 +84,7 @@ body{
 .videoBox{
 
     width: 960px;
+
     padding: 30px;
     padding-bottom: 30px;
 
@@ -115,37 +118,6 @@ body{
     font-size: 1.225em;
 }
 
-.button{
-
-    padding: 32px 23px;
-    border: 1px solid #000;
-    line-height: 17px;
-    display: inline-block;
-    font-size: 34px;
-    font-weight: 700;
-    cursor: pointer;
-    position: relative;
-    text-decoration: none;
-    background-color: #0098aa;
-    text-shadow: 0.1em 0.1em 0.1em black;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    border-radius: 2px;
-
-    color: #ffffff;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-    background-color: #00b6e8;
-    background-image: -moz-linear-gradient(top, #00c9ff, #0099c6);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00c9ff), to(#0099c6));
-    background-image: -webkit-linear-gradient(top, #00c9ff, #0099c6);
-    background-image: -o-linear-gradient(top, #00c9ff, #0099c6);
-    background-image: linear-gradient(to bottom, #00c9ff, #0099c6);
-    background-repeat: repeat-x;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff00c9ff', endColorstr='#ff0099c6', GradientType=0);
-    border-color: #0099c6 #0099c6 #005e7a;
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
-}
 
 .btnFacebook{
     color: #ffffff;
@@ -163,7 +135,6 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     padding: 12px 40px;
     display: inline-block;
-    font-size: 24px;
     text-decoration: none;
     cursor: pointer;
     text-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.25);
@@ -191,7 +162,6 @@ body{
     filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
     padding: 12px 40px;
     display: inline-block;
-    font-size: 24px;
     text-decoration: none;
     cursor: pointer;
     text-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.25);
@@ -209,20 +179,16 @@ body{
      text-align: center;
 }
 
-.footer p{
-    width: 1020px;
-}
-
 .site{
     width: 100%;
     background-color: white;
 }
 .wrapperSite{
 
+    width: 1020px;
+
     font-family: "myriad-pro", sans-serif;
     font-style: normal;
-
-    width: 1020px;
     margin: 0 auto;
 }
 
@@ -235,7 +201,7 @@ body{
     font-style: normal;
     font-weight: 800;
     line-height: 39px;
-    font-size: 24px;
+    font-size: 1.5em;
     text-align: left;
     margin: 0px;
     padding-top: 20px;
@@ -254,14 +220,12 @@ body{
     font-weight: 400;
     font-size: 1.125em;
     font-style: normal;
-    line-height: 1.4;
-
-    line-height: 29px;
+    line-height: 1.4em;
     text-align: left;
 }
 
 .wrapperSite ul{
-   list-style: none;
+    list-style: none;
     color: #000;
     margin:0px;
     padding:0px;
@@ -270,8 +234,8 @@ body{
 .wrapperSite li{
 
     width: 475px;
-    height: 150px;
 
+    height: 150px;
     display: inline-table;
 
 }
@@ -281,7 +245,6 @@ body{
     margin-right: 5px;
 }
 .wrapperSite li p{
-
 
     -webkit-margin-before: 1em;
     -webkit-margin-after: 1em;
@@ -312,18 +275,91 @@ body{
     color:#efefef;
 }
 
-@media all and (max-width: 768px) {
 
-}
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-    /* Styles */
-}
-
-@media only screen and (max-device-width: 480px) {
+@media handheld and (max-width: 480px) {
 
     body {
         width: 400px;
+    }
+
+    .shareWrapper{
+        width: 400px;
+    }
+
+    .wrapperHeader {
+        padding-top: 10px;
+        width: 400px;
+        font-size: 3em;
+        text-align: center;
+
+    }
+
+    .videoBox {
+
+        width: 400px;
+    }
+
+    .wrapperSite {
+
+        width: 400px;
+    }
+
+    .wrapperContent{
+        width: 370px;
+        padding-top: 12px;
+    }
+
+    .wrapperHeader img{
+        margin-left: -15px;
+        vertical-align: middle;
+    }
+
+    .content{
+        height: 245px;
+        background-color: #4dbcc9;
+        width: 100%;
+    }
+
+    .videoBox{
+
+        width: 351px;
+        padding: 10px;
+        padding-bottom: 12px;
+        background-color: #5fc3cf;
+
+    }
+
+    .videoPlayer{
+        width: 347px;
+        height: 195px;
+        background-color: white;
+        text-align: center;
+        border: 1px solid #000;
+
+    }
+
+    .wrapperSite h2{
+        font-size: 1.5em;
+    }
+
+    .wrapperSite p.sentence{
+        font-size: 1em;
+    }
+
+    .wrapperSite li{
+        display: inline;
+        width: 325px;
+
+    }
+
+    .footer{
+        padding-top: 5px;
+        height: 60px;
+
+    }
+
+    .footer p{
+        line-height: 1.2em;
     }
 
 
