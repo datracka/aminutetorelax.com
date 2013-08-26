@@ -160,7 +160,7 @@
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
-                    <p id="loading" class="loading">Loading video... <img  src="img/ajax-loader.gif" width="16px" height="11px"/></p>
+                    <p id="loading" class="loading">Loading video... Please, be patient. <img  src="img/ajax-loader.gif" width="16px" height="11px"/></p>
                     <p id="quote"></p>
                 </div>
             </div>
