@@ -202,6 +202,7 @@ Video.prototype.getLastVideoFromChannel = function(){
 
 
         var videoUrl = 'http://www.vimeo.com/' + JSON.parse(data)[0].id;
+        Main.library.set("lastVideo", JSON.parse(data)[0].id);
 
 
         var ov = {

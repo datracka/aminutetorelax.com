@@ -41,24 +41,12 @@ var Main = (function(){
             //Mode Full screen
             if (typeof(Main.urlVars["id"]) != "undefined" || window.location.hash != ""){
 
+
+
                 $("#playerContent").show();
                 $("#siteContent").hide();
+                this.enableModeFullScreen();
 
-                //set and return final url
-                var param;
-                (window.location.hash != "") ?
-                    idVideo = window.location.hash.slice(1):
-                    idVideo = Main.urlVars["id"];
-
-                var videoUrl = 'http://www.vimeo.com/' + idVideo;
-
-                var ov = {
-                    videoUrl: videoUrl,
-                    videoTiming: 0 //don't use timing at the moment
-                }
-
-                Video.prototype.getInfoVideo(idVideo);
-                Video.prototype.getEmbeddedVideo(ov, window.innerWidth, window.innerHeight, 1,  "View.prototype.embedVideoFS");
             }else{
 
                 $("#playerContent").hide();
@@ -70,22 +58,50 @@ var Main = (function(){
 
         },
 
+        /**
+         *
+         * encapsulate all the logic for enable the full screen mode.
+         *
+         */
+        enableModeFullScreen: function(){
+
+
+            //set and return final url
+            var param;
+            (window.location.hash != "") ?
+                idVideo = window.location.hash.slice(1):
+                idVideo = Main.urlVars["id"];
+
+            var videoUrl = 'http://www.vimeo.com/' + idVideo;
+
+            var ov = {
+                videoUrl: videoUrl,
+                videoTiming: 0 //don't use timing at the moment
+            }
+
+            Video.prototype.getInfoVideo(idVideo);
+            Video.prototype.getEmbeddedVideo(ov, window.innerWidth, window.innerHeight, 1,  "View.prototype.embedVideoFS");
+
+        },
+
         fetchElements: function(){
 
-            var menuBarWrapper     = $('#menuBarWrapper')
-            var shareOnFb       = $('#share_on_fb')
-            var shareOnTw       = $('#share_on_tw')
-            var sidebar         = $('#st_thumbs_wrapper')
-            var html            = $('html');
+            var menuBarWrapper          = $('#menuBarWrapper')
+            var shareOnFb               = $('#share_on_fb')
+            var shareOnTw               = $('#share_on_tw')
+            var sidebar                 = $('#st_thumbs_wrapper')
+            var html                    = $('html');
+            var layerVideoPlayer        = $('#layerVideoPlayer');
 
-            var cWindow         = $(window);
-            var iframe          = $('iframe');
+            var cWindow                  = $(window);
+            var iframe                  = $('iframe');
 
 
             Main.library.set('menuBarWrapper', menuBarWrapper);
             Main.library.set('sidebar', sidebar);
             Main.library.set('shareOnFb', shareOnFb);
             Main.library.set('shareOnTw', shareOnTw);
+            Main.library.set('layerVideoPlayer', layerVideoPlayer);
 
             Main.library.set('html', html);
             Main.library.set('cWindow', cWindow);
@@ -107,6 +123,7 @@ var Main = (function(){
             var shareOnFb = Main.library.get('shareOnFb');
             var shareOnTw = Main.library.get('shareOnTw');
             var iframe = Main.library.get('iframe');
+            var layerVideoPlayer = Main.library.get('layerVideoPlayer');
 
             cWindow.resize(Main.prototype.resizeScreenElements);
 
@@ -116,6 +133,7 @@ var Main = (function(){
             sidebar.hover(Main.prototype.showSidebar, Main.prototype.hideSidebar);
             shareOnFb.on('click',Main.prototype.shareOnFb);
             shareOnTw.on('click',Main.prototype.shareOnTw);
+            layerVideoPlayer.on('click',Main.prototype.switchToPlayerMode);
             menuBarWrapper.hover(Main.prototype.showCloseHeader, Main.prototype.hideCloseHeader);
 
             /** show iframe **/
@@ -191,6 +209,23 @@ var Main = (function(){
             FB.ui(obj, Main.prototype.fbCallback());
 
             e.preventDefault();
+        },
+
+        /**
+         *
+         * Load the player for the current video
+         */
+
+        switchToPlayerMode: function () {
+
+            var conf = new Config();
+            window.location.href = conf.cannonicalUrl + Main.library.get("lastVideo");
+
+            $("#siteContent").fadeOut(500, function(){
+                $("#playerContent").fadeIn(500, function(){
+                    Main.prototype.enableModeFullScreen();
+                });
+            });
         },
 
 

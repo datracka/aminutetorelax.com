@@ -51,6 +51,8 @@ View.prototype.drawImageThumbnail = function(el, data, videoId){
         var img = document.createElement("img");
         img.setAttribute("id","imgThumbs-" + el.id);
         img.setAttribute("class","imgThumbs");
+        img.setAttribute("width","200px");
+        img.setAttribute("height","150px");
         img.setAttribute("src",JSON.parse(data)[1]._content);
         //TODO better way to attach event centralizing into Main.
         img.setAttribute("onclick","View.prototype.showVideo('"+ videoId +"')");

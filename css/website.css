@@ -72,7 +72,6 @@ body{
 
 .videoPlayer{
     width: 960px;
-
     height: 540px;
     background-color: white;
     text-align: center;
@@ -80,6 +79,17 @@ body{
 
 }
 
+.layerVideoPlayer{
+    width: 960px;
+    position: absolute;
+    opacity: 0;
+    height: 540px;
+    background-color: white;
+    text-align: center;
+    border: 1px solid #000;
+    cursor: pointer;
+
+}
 
 .videoBox{
 
@@ -174,9 +184,9 @@ body{
 }
 
 .footer{
-     height:40px;
-     background-color: #a7a7a7;
-     text-align: center;
+    height:40px;
+    background-color: #a7a7a7;
+    text-align: center;
 }
 
 .site{
@@ -276,7 +286,7 @@ body{
 }
 
 
-@media handheld and (max-width: 480px) {
+@media all and (max-width: 480px) {
 
     body {
         width: 400px;
