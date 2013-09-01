@@ -142,7 +142,7 @@
             </div>
         </div>
         <div id="footer" class="footer">
-            <p>The Meerkat bookmark app is a free and personal project from <b>@aminutetorelax.com</b> - Feedback: <a id="email" class="email" href="mailto:dequevalavida@googlemail.com" title="dequevalavida@googlemail.com">dequevalavida@googlemail.com</a></p>
+            <p>The Meerkat bookmark app is a free and personal project from <a href="http://www.datracka.com" target="_blank">Vicens Fayos</a> - <a id="email" class="email" href="mailto:datracka@hotmail.com" title="datracka@hotmail.com">Email me!</a></p>
         </div>
     </div>
     <div id="playerContent" style=" position: absolute; width: 100%; height: 100%; display: none; ">
@@ -176,7 +176,7 @@
                                 <li><div class="fb-like" data-href="http://aminutetorelax.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false" data-font="verdana"></div></li>
                                 <li id="first"><a id="share_on_fb" href="javascript:return false">share on FB</a></li>
                                 <li><a id="share_on_tw" href="javascript:return false">share on Twitter</a></li>
-                                <li><a href="http://meerkat.aminutetorelax.com" target="_blank">Meerkat</a></li>
+                                <li><a href="http://www.datracka.com" target="_blank">About me</a></li>
                                 <li id="list_fb" class="list_fb">
                                     <a id="facebook" class="facebook" href="http://facebook.com/aminutetorelax" target="_blank">
                                          <img id="img_fb" src="/img/facebook_19_on.jpg"/>
