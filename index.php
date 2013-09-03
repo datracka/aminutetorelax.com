@@ -78,17 +78,17 @@
         <div id="share" class="share">
             <div id="shareWrapper" class="shareWrapper">
                 <a href="http://www.facebook.com/aminutetorelax" id="linkToFb" class="linkToFb" target="_blank">
-                    <img src="img/facebook.jpg" id="facebook" class="facebook" style="padding:2px" title="Like us on facebook" width="26px" height="26px"/>
+                    <img alt="facebook button" src="img/facebook.jpg" id="facebook" class="facebook" style="padding:2px" title="Like us on facebook" width="26px" height="26px"/>
                 </a>
                 <a href="http://www.twitter.com/aminutetorelax" id="linkToTw" class="linkToTw" target="_blank">
-                    <img src="img/twitter.jpg" id="twitter" class="twitter" style="padding:2px" title="Follow us on twitter" width="26px" height="26px"/>
+                    <img alt="twitter button" src="img/twitter.jpg" id="twitter" class="twitter" style="padding:2px" title="Follow us on twitter" width="26px" height="26px"/>
                 </a>
             </div>
         </div>
         <div id="header" class="header">
             <div id="wrapperHeader" class="wrapperHeader">
-                <span>A minute to Relax</span>
-                <img src="img/meerkat.png" id="meerkat" class="meerkat" width="45px" height="76px"/>
+                <h1>A minute to Relax</h1>
+                <img src="img/meerkat.png" alt="meerkat: a minute to relax" id="meerkat" class="meerkat" width="45px" height="76px"/>
             </div>
         </div>
         <div id="content" class="content">
@@ -104,35 +104,34 @@
         </div>
         <div id="site" class="site">
             <div id="wrapperSite" class="wrapperSite">
-                <h2>Watch a very inspiring video which allows you to have a blackout when you need it.</h2>
-                <p id="sentence" class="sentence">Sometimes when you are in your office at your desk and you feel stressed and anxious would not you like to
+                <h2>Watch a very inspiring video which allows you to have a moment to relax.</h2>
+                <p id="sentence" class="sentence" style="text-align: center;">Sometimes if you are in your office at your desk and you feel stressed and anxious would not you like to
                     reset your mind?
-                    This site allows you having a minute of peace watching a random HD fullscreen video for
-                    just a minute in your computer.
+                    This site allows you having a minute of peace watching a random HD fullscreen video. Allow yourself to relax for a minute.
                 </p>
-                <h2 style="text-align: left; margin-bottom: 10px; font-family: 'Loved by the King', cursive; font-size: 24px;">Other hints for Relaxing:</h2>
+                <h2 style="text-align: left; margin-bottom: 10px; font-family: 'Loved by the King', cursive; font-size: 24px;">Other hints to relax yourself:</h2>
                 <ul>
 
                     <li>
-                        <img class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
+                        <img alt="bullet point" class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
                         <p>
                             Practice positive thinking. Positive thinking isn't about wishful or dreamer thinking; it's about making the most of the situations that you find yourself in and avoiding any tendency to add negative overlays.
                         </p>
                     </li>
                     <li>
-                        <img class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
+                        <img alt="bullet point" class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
                         <p>
                             Think logically, and restrain your emotions. If you learn to think more sequentially and logically when you're stressed, you might find that solutions become more apparent.
                         </p>
                     </li>
                     <li>
-                        <img class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
+                        <img alt="bullet point" class="bulb2"  src="img/bulb2.png" width="128px" height="128px"/>
                         <p>
-                            Find a quiet place when you are feeling overwhelmed and pamper yourself. Draw a warm, Lie on your bed or sofa, Read a good book or imagine a personal paradise.
+                            Find a quiet place if you are feeling overwhelmed and pamper yourself. Draw a warm, Lie on your bed or sofa, Read a good book or imagine a personal paradise.
                         </p>
                     </li>
                     <li>
-                        <img class="bulb2"  src="img/bulb2.png" width="128px" height="128px" />
+                        <img alt="bullet point" class="bulb2"  src="img/bulb2.png" width="128px" height="128px" />
                         <p>
                             Learn to prioritize. Make a list of tasks for the day. Organize the list by importance, and be proactive and take care of things before they become a big problem. Time spent more productively means more free time to relax.
                         </p>
@@ -160,7 +159,7 @@
 
             <div id="wrapperLoading" class="wrapperLoading">
                 <div id="loadingBackground" class="loadingBackground">
-                    <p id="loading" class="loading">Loading video... Please, be patient. <img  src="img/ajax-loader.gif" width="16px" height="11px"/></p>
+                    <p id="loading" class="loading">Loading video... Please, be patient. <img alt="loader" src="img/ajax-loader.gif" width="16px" height="11px"/></p>
                     <p id="quote"></p>
                 </div>
             </div>
@@ -179,12 +178,12 @@
                                 <li><a href="http://www.datracka.com" target="_blank">About me</a></li>
                                 <li id="list_fb" class="list_fb">
                                     <a id="facebook" class="facebook" href="http://facebook.com/aminutetorelax" target="_blank">
-                                         <img id="img_fb" src="/img/facebook_19_on.jpg"/>
+                                         <img id="img_fb" alt="facebook" src="/img/facebook_19_on.jpg" width="19px" height="19px"/>
                                     </a>
                                 </li>
                                 <li id="list_twitter" class="list_twitter">
                                     <a id="twitter" class="twitter" href="http://twitter.com/aminutetorelax" target="_blank">
-                                        <img id="img_twitter" src="/img/twitter_19_on.jpg"/>
+                                        <img id="img_twitter" alt="twitter" src="/img/twitter_19_on.jpg" width="10px" height="19px"/>
                                     </a>
                                 </li>
                             </ul>

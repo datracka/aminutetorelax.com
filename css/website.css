@@ -35,6 +35,13 @@ body{
     color: #000;
 }
 
+.wrapperHeader h1{
+    font-size: 1em;
+    margin: 0px;
+    display: inline-block;
+    font-weight: normal;
+}
+
 .wrapperHeader img{
     margin-left: -15px;
 }
